@@ -1,0 +1,3 @@
+.home-select{font-weight:normal;font-size:1.2em;}
+.play-select{font-weight:bolder;font-size:1.4em;}
+@media only screen and (max-width:590px){.bignavlinks a.play-select{font-size:1.2em!important;}}

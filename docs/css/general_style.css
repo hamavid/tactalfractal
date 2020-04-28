@@ -1,0 +1,122 @@
+html,body{margin:0;padding:0;background-color:#99cc99;color:#003300;box-sizing: border-box;}
+a,a:visited,a:hover,a:active{color:#003300;}
+body {
+	text-align:center;
+  	font-size:100%;
+  	padding:0;
+  	font-family:Oxygen, sans-serif;
+  	max-width:900px;margin:auto;
+  	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-touch-callout: none;
+    /*-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;*/
+}
+.wrapper{
+	text-align:left;
+	max-width:800px;
+	margin:auto;
+	padding:0.5em 2em 2em 2em;
+	vertical-align: middle;
+}
+h1{margin:0;}h2{text-align: center}
+h1 a{color:#003300;font-family:sans-serif;text-decoration:none;font-size:1.5em;}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+footer .cp{padding:1em;}
+footer span {padding:0 1em 0 1em;}
+footer .line{margin-top:1em;width:100%;}
+footer .cp{font-size:0.8em;float:left;}
+
+/* delay hover opacity */
+.delay {
+  opacity:0.6;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-delay: 0s;
+}
+.delay:hover {
+  opacity:1;
+}
+
+
+/* control look and behavior of navbar and its contents for diff window sizes */
+.bignavlinks {margin:1em;display:block;}
+.bignavlinks a {padding:0.2em 1em;height:1.1em;border-radius:5px;}
+nav a{
+	color:#003300;
+	font-size:1.2em;
+	text-decoration:none;
+}
+.bignavlinks a:hover{background-color:#80b380;}
+.navbar-bars{margin:10px 0 10px 10px;float:left;display:none;cursor:pointer!important;}
+.navbar-bars span{display:table-cell;vertical-align:middle;padding:10px 0 7px 7px;font-size:0.8em;}
+.line{display:none;margin:0;margin-top:57px;border-bottom:1px solid rgba(0,51,0,0.5);}
+.smallnavlinks{
+	display:none;
+	line-height:2.4em;
+	position:fixed;
+	width:100%;
+	text-align:center;
+	background-color:#99cc99;
+	margin-bottom:2px;
+}
+.smallnavlinks ul {list-style:none;margin:0px;padding:0px;}
+.smallnavlinks li {border-bottom:1px solid rgba(0,51,0,0.5);text-align: center!important}
+.smallnavlinks li:hover{background-color:#80b380;}
+.overlay{
+	position:fixed;display:none;
+	cursor:pointer;z-index:1;
+	width:100%;height:100%;
+	top:0;left:0;right:0;bottom:0;
+	background-color:rgba(0,0,0,0.5);
+}
+.name img {position:relative;margin:auto;margin:1.6em 0.2em;width:80%;max-width:450px}
+.shadow {
+	-webkit-box-shadow: 0px 22px 41px 1px rgba(79,82,100,1);
+	-moz-box-shadow: 0px 22px 41px 1px rgba(79,82,100,1);
+	box-shadow: 0px 22px 41px 1px rgba(79,82,100,1);
+}
+
+/* for small screens */
+/*@media only screen and (max-width:895px){ ## once EPK is added this format is for all widths*/
+	footer .cp{float:none;text-align:center;line-height:1.7em;}
+	footer .cp{padding:0.2em 1em 1em 1em;}
+/*}*/
+@media only screen and (max-width:745px){
+	.bignavlinks a {padding:0.2em 0.45em;}
+	body{padding:0;}
+}
+@media only screen and (max-width:650px){
+	.bignavlinks a {font-size:1em;} /* NOTE: change select-class in all page-specific css if this max width or font size changes */
+}
+@media only screen and (min-width:500px){
+	.smallnavlinks{display:none!important;}
+	#overlaybkgrnd{display:none!important;}
+}
+@media only screen and (max-width:499px){
+	header{
+		height:57px;
+		position:fixed;
+		width:100%;
+		z-index:3;
+		background-color:#99cccc;
+		top:0;
+		border-bottom:1px solid rgba(184,186,199,0.5);
+	}
+	.line{display:block;}
+	header .name img{max-width:170px;max-height:70px;margin:10px 20px 10px 5px;float:right;}
+	.wrapper{margin-top:57px!important;padding:1em;}
+	.bignavlinks {display:none;}
+    .navbar-bars{display:table!important;}
+}
+@media only screen and (max-width:250px){
+	header .name img {display:none;}
+	.navbar-bars{width:100%;text-align:center;margin:0.8em 0em;}
+	.navbar-bars span{display:none;}
+}
