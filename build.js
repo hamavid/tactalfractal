@@ -28,7 +28,8 @@ metalsmith(__dirname)
             partials: {
               pagehead: 'partials/pagehead',
               pageheader: 'partials/pageheader',
-              footer: 'partials/footer'
+              footer: 'partials/footer',
+              endscripts: 'partials/endscripts'
             }
         }))
   .use(rewrite([{

@@ -1,5 +1,6 @@
-html,body{margin:0;padding:0;background-color:#99cc99;color:#003300;box-sizing: border-box;}
-a,a:visited,a:hover,a:active{color:#003300;}
+/*background-color:#99cc99;color:#003300;background-color:#80b380;*/
+html,body{margin:0;padding:0;background-color:#ffffff;color:#000000;box-sizing: border-box;}
+a,a:visited,a:hover,a:active{color:#000000;text-decoration: none;}
 body {
 	text-align:center;
   	font-size:100%;
@@ -22,7 +23,7 @@ body {
 	vertical-align: middle;
 }
 h1{margin:0;}h2{text-align: center}
-h1 a{color:#003300;font-family:sans-serif;text-decoration:none;font-size:1.5em;}
+h1 a{color:#000000;font-family:sans-serif;text-decoration:none;font-size:1.5em;}
 .clearfix::after {
     content: "";
     clear: both;
@@ -68,7 +69,7 @@ nav a{
 }
 .smallnavlinks ul {list-style:none;margin:0px;padding:0px;}
 .smallnavlinks li {border-bottom:1px solid rgba(0,51,0,0.5);text-align: center!important}
-.smallnavlinks li:hover{background-color:#80b380;}
+.smallnavlinks li:hover{background-color:#F0F0F0;}
 .overlay{
 	position:fixed;display:none;
 	cursor:pointer;z-index:1;
@@ -105,7 +106,7 @@ nav a{
 		position:fixed;
 		width:100%;
 		z-index:3;
-		background-color:#99cccc;
+		background-color:#ffffff;
 		top:0;
 		border-bottom:1px solid rgba(184,186,199,0.5);
 	}

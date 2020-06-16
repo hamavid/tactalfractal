@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	{{>pagehead}}
+	<body>
+		<div id='box'>
+<script src='{{outdirs}}/js/wheelzoom.js'></script>
+<img id='wheelzoom' src='{{outdirs}}/images/alittlelettercollage.jpg' width='800' height='500' style='max-width: auto' alt='test picture'>
+<script>
+	wheelzoom(document.querySelector('#wheelzoom'), {initialZoom: 11, maxZoom: 11, zoom: 0.02});
+</script>
+</div>
+	</body>
+</html>
