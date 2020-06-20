@@ -1,4 +1,3 @@
-/* TO ADD: MORE VENDOR PREFIXES */
 html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* NO JS VERSION */
@@ -16,10 +15,16 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 /* INSTRUCTIONS */
 .instructions{
 	display:none;
-	position:fixed;bottom:0;width:100%;padding:0.3em;
+	position:fixed;bottom:0;width:90%;padding:0.7em;
 	max-width:900px;margin:auto;opacity:1;z-index:3;
-	background:rgba(200,200,200,0.8);font-size:1.2em;
+	background:rgba(220,220,220,0.8);font-size:1.2em;
 	border-top-left-radius:10px;border-top-right-radius:10px;
+	left:50%;
+	-webkit-transform: translate(-50%);
+	-moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    transform: translate(-50%);
 }
 .instructions i {padding:0 0.6em;}
 
@@ -28,18 +33,18 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 #puzzle-a,#puzzle-b{
 	width:100%;margin:auto;
 	max-width:900px;position:fixed;top:50%;left:50%;
-	 -webkit-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 .instructions,#puzzle-a,#puzzle-b{
-    -webkit-transition:opacity 0.5s;
-	-moz-transition:opacity 0.5s;
-    -ms-transition:opacity 0.5s;
-    -o-transition:opacity 0.5s;
-	transition:opacity 0.5s;
+    -webkit-transition:opacity 0.8s;
+	-moz-transition:opacity 0.8s;
+    -ms-transition:opacity 0.8s;
+    -o-transition:opacity 0.8s;
+	transition:opacity 0.8s;
 }
 svg{
 	width:100%;height:100%;
@@ -53,11 +58,10 @@ svg{
 }
 svg.shift{top:31px;}
 svg>g{
-	position:absolute;display:block;margin:0;
-	top: 0;left: 0;	
+	position:absolute;display:block;
+	margin:0;top: 0;left: 0;	
 }
 path{stroke:#000;fill:#fff;stroke-width:1.6;}
-.x path {fill:red;}
 #pb path{
 	stroke-width:0.5;
 	-webkit-transition:stroke-width 0.5s;
@@ -67,30 +71,47 @@ path{stroke:#000;fill:#fff;stroke-width:1.6;}
 	transition:stroke-width 0.5s;
 }
 
+/* puzzle piece colors */
+/*#pa .j,#pb .a path,#pb .c path,#pb .e path,#pb .g path,#pb .h path,#pb .j path,#pb .l path,#pb .n path,#pb .p path, #pb .q path,#pb .r path,#pb .t path,#pb .u path{
+	fill:rgb(215,215,215);
+}
+#pb .b path,#pb .d path,#pb .f path,#pb .i path,#pb .k path,#pb .m, path,#pb .o path,#pb .s path, #pb .v path{
+	fill:rgb(245,245,245);
+}*/
+
 
 /* BANNER AND LINKS */
 #textpocket{width: 100%;}
 .banner,.slider{font-variant: small-caps;z-index:3;}
 .banner{
-	background:rgba(200,200,200,1);position:fixed;top:0;left:0;
+	background:rgba(220,220,220,1);position:fixed;top:0;left:0;
 	width:100%;margin:auto;font-size:2em;padding:0.3em 0;opacity:1;
+	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 }
-#title{display:inline-block;}
+#title{
+	display:inline-block;
+	/*background:rgba(220,220,220,1);
+	padding:0;
+	box-shadow: 0px 0px 16px 0px rgba(220,220,220,0.8);*/
+}
 .banner .link a{
 	font-size:0.7em;margin:0 2.8em;display:inline-block;
 	padding:0.1em 0.5em 0.2em 0.5em;border-radius:5px;
-	-webkit-transition:background 0.3s;
-	-moz-transition:background 0.3s;
-    -ms-transition:background 0.3s;
-    -o-transition:background 0.3s;
+	-webkit-transition:background 0.3s, color 0.3s;
+	-moz-transition:background 0.3s, color 0.3s;
+    -ms-transition:background 0.3s, color 0.3s;
+    -o-transition:background 0.3s, color 0.3s;
 	transition:background 0.3s;
 }
-.banner .link a:hover{background: rgba(180,180,180,1);}
+.banner .link a:hover{color:#fff;background: rgba(170,170,170,1);}
 .slider{
 	position:relative;width:350px;max-width:70%;margin:auto;
-	font-size:2.5em;padding:1.5em 0em;
-	background:rgba(200,200,200,0.8);border-radius:10px;
+	font-size:2.5em;padding:1.3em 0em;
+	background:rgba(220,220,220,0.8);border-radius:10px;
 	-webkit-transition:height 0.3s;
 	-moz-transition:height 0.3s;
     -ms-transition:height 0.3s;
