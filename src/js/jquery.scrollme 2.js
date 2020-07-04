@@ -31,11 +31,18 @@ var scrollme = ( function( $ )
 
 	_this.property_defaults =
 	{
+		'opacity' : 1,
 		'translatex' : 0,
 		'translatey' : 0,
-		'scale' : 1
+		'translatez' : 0,
+		'rotatex' : 0,
+		'rotatey' : 0,
+		'rotatez' : 0,
+		'scale' : 1,
+		'scalex' : 1,
+		'scaley' : 1,
+		'scalez' : 1
 	};
-
 
 	_this.scrollme_selector = '.scrollme';
 	_this.animateme_selector = '.animateme';
@@ -49,6 +56,30 @@ var scrollme = ( function( $ )
 		'linear' : function( x )
 		{
 			return x;
+		},
+
+		'easeout' : function( x )
+		{
+			return x * x * x;
+		},
+
+		'easein' : function( x )
+		{
+			x = 1 - x;
+			return 1 - ( x * x * x );
+		},
+
+		'easeinout' : function( x )
+		{
+			if( x < 0.5 )
+			{
+				return ( 4 * x * x * x );
+			}
+			else
+			{
+				x = 1 - x;
+				return 1 - ( 4 * x * x * x ) ;
+			}
 		}
 	};
 
@@ -77,11 +108,11 @@ var scrollme = ( function( $ )
 
 		// Load all elements to animate
 
-		//_this.init_elements(); // HH commenting out because not relevant for our purposes and does double duty
+		_this.init_elements();
 
 		// Get element & viewport sizes
 
-		// _this.on_resize(); // HH commenting out because not relevant for our purposes and does double duty
+		_this.on_resize();
 
 		// Recalculate heights & positions on resize and rotate
 
@@ -130,14 +161,40 @@ var scrollme = ( function( $ )
 				effect.from = effect.element.data( 'from' );
 				effect.to = effect.element.data( 'to' );
 
-				effect.easing = _this.easing_functions[ 'linear' ];
+				if( effect.element.is( '[data-crop]' ) )
+				{
+					effect.crop = effect.element.data( 'crop' );
+				}
+				else
+				{
+					effect.crop = true;
+				}
+
+				if( effect.element.is( '[data-easing]' ) )
+				{
+					effect.easing = _this.easing_functions[ effect.element.data( 'easing' ) ]
+				}
+				else
+				{
+					effect.easing = _this.easing_functions[ 'easeout' ];
+				}
 
 				// Get animated properties
 
 				var properties = {};
+
+				if( effect.element.is( '[data-opacity]' ) )    properties.opacity    = effect.element.data( 'opacity' );
 				if( effect.element.is( '[data-translatex]' ) ) properties.translatex = effect.element.data( 'translatex' );
 				if( effect.element.is( '[data-translatey]' ) ) properties.translatey = effect.element.data( 'translatey' );
+				if( effect.element.is( '[data-translatez]' ) ) properties.translatez = effect.element.data( 'translatez' );
+				if( effect.element.is( '[data-rotatex]' ) )    properties.rotatex    = effect.element.data( 'rotatex' );
+				if( effect.element.is( '[data-rotatey]' ) )    properties.rotatey    = effect.element.data( 'rotatey' );
+				if( effect.element.is( '[data-rotatez]' ) )    properties.rotatez    = effect.element.data( 'rotatez' );
 				if( effect.element.is( '[data-scale]' ) )      properties.scale      = effect.element.data( 'scale' );
+				if( effect.element.is( '[data-scalex]' ) )     properties.scalex     = effect.element.data( 'scalex' );
+				if( effect.element.is( '[data-scaley]' ) )     properties.scaley     = effect.element.data( 'scaley' );
+				if( effect.element.is( '[data-scalez]' ) )     properties.scalez     = effect.element.data( 'scalez' );
+
 				effect.properties = properties;
 
 				effects.push( effect );
@@ -162,14 +219,6 @@ var scrollme = ( function( $ )
 			{
 				_this.update_elements_in_view();
 				_this.animate();
-
-				// HH hack to set puzzle-a to fully solved if we get to textpocket
-				var inview = _this.elements_in_view[0];
-				if (inview != undefined) {
-					if (inview['element'].attr('id') === 'textpocket') {
-						$('#puzzle-a path.animateme').css('transform','translate(0px, 0px');
-					}
-				}
 			}
 
 			_this.viewport_top_previous = _this.viewport_top;
@@ -220,13 +269,16 @@ var scrollme = ( function( $ )
 
 				// Crop boundaries
 
-				if( start < 0 ) start = 0;
-				if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
+				if( effect.crop )
+				{
+					if( start < 0 ) start = 0;
+					if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
+				}
 
 				// Get scroll position of reference selector
 
 				var scroll = ( _this.viewport_top - start ) / ( end - start );
-				//console.log(scroll);
+
 				// Get relative scroll position for effect
 
 				var from = effect[ 'from' ];
@@ -235,33 +287,41 @@ var scrollme = ( function( $ )
 				var length = to - from;
 
 				var scroll_relative = ( scroll - from ) / length;
-				
+
 				// Apply easing
 
-				//var scroll_eased = effect.easing( scroll_relative );
-				var scroll_eased = scroll_relative;
+				var scroll_eased = effect.easing( scroll_relative );
 
 				// Get new value for each property
 
+				var opacity    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'opacity' );
 				var translatey = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatey' );
 				var translatex = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatex' );
+				var translatez = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatez' );
+				var rotatex    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatex' );
+				var rotatey    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatey' );
+				var rotatez    = _this.animate_value( scroll , scroll_eased , from , to , effect , 'rotatez' );
 				var scale      = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scale' );
-			
+				var scalex     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scalex' );
+				var scaley     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scaley' );
+				var scalez     = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scalez' );
+
 				// Override scale values
 
 				if( 'scale' in effect.properties )
 				{
 					scalex = scale;
 					scaley = scale;
+					scalez = scale;
 				}
 
 				// Update properties
 
 				effect.element.css(
 				{
-					'transform' : 'translate( '+translatex+'px , '+translatey+'px ) scale( '+scale+' , '+scale+' )'
+					'opacity' : opacity,
+					'transform' : 'translate3d( '+translatex+'px , '+translatey+'px , '+translatez+'px ) rotateX( '+rotatex+'deg ) rotateY( '+rotatey+'deg ) rotateZ( '+rotatez+'deg ) scale3d( '+scalex+' , '+scaley+' , '+scalez+' )'
 				} );
-
 			}
 		}
 	}
@@ -297,8 +357,13 @@ var scrollme = ( function( $ )
 
 		switch( property )
 		{
+			case 'opacity'    : new_value = new_value.toFixed(2); break;
 			case 'translatex' : new_value = new_value.toFixed(0); break;
 			case 'translatey' : new_value = new_value.toFixed(0); break;
+			case 'translatez' : new_value = new_value.toFixed(0); break;
+			case 'rotatex'    : new_value = new_value.toFixed(1); break;
+			case 'rotatey'    : new_value = new_value.toFixed(1); break;
+			case 'rotatez'    : new_value = new_value.toFixed(1); break;
 			case 'scale'      : new_value = new_value.toFixed(3); break;
 			default : break;
 		}
@@ -331,7 +396,6 @@ var scrollme = ( function( $ )
 			if ( ( _this.elements[i].top < _this.viewport_bottom ) && ( _this.elements[i].bottom > _this.viewport_top ) )
 			{
 				_this.elements_in_view.push( _this.elements[i] );
-
 			}
 		}
 	}

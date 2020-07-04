@@ -36,21 +36,10 @@ var scrollme = ( function( $ )
 		'scale' : 1
 	};
 
-
 	_this.scrollme_selector = '.scrollme';
 	_this.animateme_selector = '.animateme';
 
 	_this.update_interval = 10;
-
-	// Easing functions
-
-	_this.easing_functions =
-	{
-		'linear' : function( x )
-		{
-			return x;
-		}
-	};
 
 	// Document events to bind initialisation to
 
@@ -77,11 +66,11 @@ var scrollme = ( function( $ )
 
 		// Load all elements to animate
 
-		//_this.init_elements(); // HH commenting out because not relevant for our purposes and does double duty
+		_this.init_elements();
 
 		// Get element & viewport sizes
 
-		// _this.on_resize(); // HH commenting out because not relevant for our purposes and does double duty
+		_this.on_resize();
 
 		// Recalculate heights & positions on resize and rotate
 
@@ -130,14 +119,24 @@ var scrollme = ( function( $ )
 				effect.from = effect.element.data( 'from' );
 				effect.to = effect.element.data( 'to' );
 
-				effect.easing = _this.easing_functions[ 'linear' ];
+				if( effect.element.is( '[data-crop]' ) )
+				{
+					effect.crop = effect.element.data( 'crop' );
+				}
+				else
+				{
+					effect.crop = true;
+				}
+
 
 				// Get animated properties
 
 				var properties = {};
+
 				if( effect.element.is( '[data-translatex]' ) ) properties.translatex = effect.element.data( 'translatex' );
 				if( effect.element.is( '[data-translatey]' ) ) properties.translatey = effect.element.data( 'translatey' );
 				if( effect.element.is( '[data-scale]' ) )      properties.scale      = effect.element.data( 'scale' );
+
 				effect.properties = properties;
 
 				effects.push( effect );
@@ -162,14 +161,6 @@ var scrollme = ( function( $ )
 			{
 				_this.update_elements_in_view();
 				_this.animate();
-
-				// HH hack to set puzzle-a to fully solved if we get to textpocket
-				var inview = _this.elements_in_view[0];
-				if (inview != undefined) {
-					if (inview['element'].attr('id') === 'textpocket') {
-						$('#puzzle-a path.animateme').css('transform','translate(0px, 0px');
-					}
-				}
 			}
 
 			_this.viewport_top_previous = _this.viewport_top;
@@ -220,13 +211,16 @@ var scrollme = ( function( $ )
 
 				// Crop boundaries
 
-				if( start < 0 ) start = 0;
-				if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
+				if( effect.crop )
+				{
+					if( start < 0 ) start = 0;
+					if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
+				}
 
 				// Get scroll position of reference selector
 
 				var scroll = ( _this.viewport_top - start ) / ( end - start );
-				//console.log(scroll);
+
 				// Get relative scroll position for effect
 
 				var from = effect[ 'from' ];
@@ -235,18 +229,14 @@ var scrollme = ( function( $ )
 				var length = to - from;
 
 				var scroll_relative = ( scroll - from ) / length;
-				
-				// Apply easing
 
-				//var scroll_eased = effect.easing( scroll_relative );
-				var scroll_eased = scroll_relative;
 
 				// Get new value for each property
 
-				var translatey = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatey' );
-				var translatex = _this.animate_value( scroll , scroll_eased , from , to , effect , 'translatex' );
-				var scale      = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scale' );
-			
+				var translatey = _this.animate_value( scroll  , from , to , effect , 'translatey' );
+				var translatex = _this.animate_value( scroll  , from , to , effect , 'translatex' );
+				var scale      = _this.animate_value( scroll  , from , to , effect , 'scale' );
+
 				// Override scale values
 
 				if( 'scale' in effect.properties )
@@ -261,7 +251,6 @@ var scrollme = ( function( $ )
 				{
 					'transform' : 'translate( '+translatex+'px , '+translatey+'px ) scale( '+scale+' , '+scale+' )'
 				} );
-
 			}
 		}
 	}
@@ -269,7 +258,7 @@ var scrollme = ( function( $ )
 	// ----------------------------------------------------------------------------------------------------
 	// Calculate property values
 
-	_this.animate_value = function( scroll , scroll_eased , from , to , effect , property )
+	_this.animate_value = function( scroll , from , to , effect , property )
 	{
 		var value_default = _this.property_defaults[ property ];
 
@@ -291,7 +280,7 @@ var scrollme = ( function( $ )
 
 		// Calculate new property value
 
-		var new_value = value_default + ( scroll_eased * ( value_target - value_default ) );
+		var new_value = value_default + ( 1 * ( value_target - value_default ) );
 
 		// Round as required
 
@@ -331,7 +320,6 @@ var scrollme = ( function( $ )
 			if ( ( _this.elements[i].top < _this.viewport_bottom ) && ( _this.elements[i].bottom > _this.viewport_top ) )
 			{
 				_this.elements_in_view.push( _this.elements[i] );
-
 			}
 		}
 	}
