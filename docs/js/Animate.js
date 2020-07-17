@@ -12,7 +12,7 @@
 	$('#pb').css('height','350%');
 	$('#holder1,#holder2,#puzzle-a,#puzzle-b,#puzzle-b-solved').css('height','100%');
 	$('#textpocket').css('height','99%');
-	$('#holder3').css('height','40%');
+	$('#holder3').css('height','100%');
 	
 	// call the svgs for puzzles
 	d3.svg("../svgs/puzzle-a-withdata.svg").then(function(xml) {
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		// control opacity of instructions bar at top and wantmore bar at bottom
 		if (texttop>2.7*vh) {instructions.css('opacity',1);wantmore.css('opacity',0);}
 		else {
-			if (texttop<-4.6*vh) {
+			if (texttop<-4.9*vh) {
 				wantmore.css('opacity',1);
 			} else {
 				wantmore.css('opacity',0);

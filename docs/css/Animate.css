@@ -22,9 +22,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 }
 #wantmore a{text-decoration: underline;}
 #instructions{
-	font-size:1.2em;
-	border-top-left-radius:10px;border-top-right-radius:10px;
-	bottom:0;left:50%;
+	border-bottom-left-radius:10px;border-bottom-right-radius:10px;
+	top:0;left:50%;
 	-webkit-transform: translate(-50%);
 	-moz-transform: translate(-50%);
     -ms-transform: translate(-50%);
@@ -33,7 +32,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 #instructions i {padding:0 0.6em;}
 #instructions, #wantmore{
 	opacity:0;
-	display:none;
+	display:none;font-size:1.2em;
 	width:90%;max-width:500px;
 	margin:auto;padding:0.7em;
 	z-index:3;
@@ -89,7 +88,6 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:stroke-width 0.5s;
 	transition:stroke-width 0.5s;
 }
-.unzoomed{transform: translate(290px,272px) scale(0.25,0.25)!important;}
 
 /* puzzle piece colors */
 /*#pa .j,#pb .a path,#pb .c path,#pb .e path,#pb .g path,#pb .h path,#pb .j path,#pb .l path,#pb .n path,#pb .p path, #pb .q path,#pb .r path,#pb .t path,#pb .u path{
@@ -102,7 +100,6 @@ path{fill:#fff;stroke-width:1.6;}
 
 /* BANNER AND LINKS */
 #textpocket{width:100%;}
-#banner,#slider{font-variant:small-caps;z-index:3;}
 #banner{
 	position:fixed;top:0;left:0;
 	width:100%;margin:auto;
@@ -142,6 +139,7 @@ path{fill:#fff;stroke-width:1.6;}
 	transition:height 0.3s;;
 }
 #banner,#slider{
+	font-variant:small-caps;z-index:3;
 	-webkit-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
 	-moz-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
     -ms-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
@@ -150,6 +148,13 @@ path{fill:#fff;stroke-width:1.6;}
 }
 #banner.disappear,#slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
 
+#slider,#instructions,#wantmore{
+	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	-o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+	box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+}
 
 /* SMALL SCREENS */
 @media only screen and (max-width:599px), screen and (max-height:499px){

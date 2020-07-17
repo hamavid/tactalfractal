@@ -174,13 +174,14 @@ var scrollme = ( function( $ )
 					if (firstinview['element'].attr('id') === 'holder1') {
 						puzzb.css('transform','scale(1,1)'); 
 					}
-					/*// If we get to holder3
+					// If we get to holder3
 					if (firstinview['element'].attr('id') === 'holder3') {
+						console.log('holder3');
 						// Set puzzle-b to fully solved
-						$('#puzzle-b>svg>g>g.animateme').css('transform','translate(0px, 0px');
+						//$('#puzzle-b>svg>g>g.animateme').css('transform','translate(0px, 0px');
 						// Set puzzle-b to fully unzoomed
-						puzzb.css('transform','translate(290px, 272px) scale(0.25,0.25)');
-					}*/
+						//puzzb.css('transform','translate(290px, 272px) scale(0.25,0.25)');
+					}
 				}
 			}
 
