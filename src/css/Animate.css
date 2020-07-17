@@ -1,38 +1,52 @@
 html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* NO JS VERSION */
+#nojs div.spacer{height:61px;}
+#nojs div.footer{height:61px;width:100%;background:rgba(220,220,220,0.8);}
 #nojs img{
-	position:absolute;
-	top:50%;left:50%;
-	width:400px;max-width:70%;
-    -webkit-transform: translate(-50%, -45%);
-    -moz-transform: translate(-50%, -45%);
-    -ms-transform: translate(-50%, -45%);
-    -o-transform: translate(-50%, -45%);
-    transform: translate(-50%, -45%);
+	width:500px;max-width:80%;
+	padding:1em;margin:auto;
 }
+#nojs p{padding:1em;}
 
-/* INSTRUCTIONS */
+
+/* WORDS */
+#wantmore{
+	border-radius:10px;
+	top:50%;left:50%;
+	-webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#wantmore a{text-decoration: underline;}
 #instructions{
-	display:none;
-	position:fixed;bottom:0;left:50%;
-	width:90%;max-width:900px;
 	font-size:1.2em;
-	margin:auto;padding:0.7em;
-	opacity:1;z-index:3;
-	background:rgba(220,220,220,0.8);
 	border-top-left-radius:10px;border-top-right-radius:10px;
+	bottom:0;left:50%;
 	-webkit-transform: translate(-50%);
 	-moz-transform: translate(-50%);
     -ms-transform: translate(-50%);
     -o-transform: translate(-50%);
-    transform: translate(-50%);
-}
+    transform: translate(-50%);}}
 #instructions i {padding:0 0.6em;}
+#instructions, #wantmore{
+	opacity:0;
+	display:none;
+	width:90%;max-width:500px;
+	margin:auto;padding:0.7em;
+	z-index:3;
+	background:rgba(220,220,220,0.8);
+	position:fixed;
+}
+
 
 /* PUZZLES */
-#pa,#pb,#holder,#textpocket,#puzzle-a,#puzzle-b{height:0;}
-#puzzle-a,#puzzle-b{
+
+#pa,#pb,#holder1,#holder2,#holder3,#textpocket,#puzzle-a,#puzzle-b,#puzzle-b-solved{height:0;}
+#puzzle-a,#puzzle-b,#puzzle-b-solved{
+	opacity: 0;
 	position:fixed;top:50%;left:50%;
 	width:100%;max-width:900px;
 	margin:auto;
@@ -42,7 +56,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#instructions,#puzzle-a,#puzzle-b{
+#instructions,#puzzle-a,#puzzle-b,#puzzle-b-solved,#wantmore{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
@@ -50,7 +64,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 	transition:opacity 0.8s;
 }
 svg{
-	display:block;
+	display: block;
 	position:relative;top:0;left:0;
 	width:100%;height:100%;margin:auto;
 	-webkit-transition:top 0.3s;
@@ -61,11 +75,12 @@ svg{
 }
 svg.shift{top:31px;}
 svg>g{
-	display:block;
+	display:block; transform:scale(1,1);
 	position:absolute;top:0;left:0;
 	margin:0;	
 }
-path{stroke:#000;fill:#fff;stroke-width:1.6;}
+
+path{fill:#fff;stroke-width:1.6;}
 #pb path{
 	stroke-width:0.5;
 	-webkit-transition:stroke-width 0.5s;
@@ -74,6 +89,7 @@ path{stroke:#000;fill:#fff;stroke-width:1.6;}
     -o-transition:stroke-width 0.5s;
 	transition:stroke-width 0.5s;
 }
+.unzoomed{transform: translate(290px,272px) scale(0.25,0.25)!important;}
 
 /* puzzle piece colors */
 /*#pa .j,#pb .a path,#pb .c path,#pb .e path,#pb .g path,#pb .h path,#pb .j path,#pb .l path,#pb .n path,#pb .p path, #pb .q path,#pb .r path,#pb .t path,#pb .u path{
@@ -147,7 +163,7 @@ path{stroke:#000;fill:#fff;stroke-width:1.6;}
 	svg.shift{top:21px;}
 	#slider{font-size:1.8em;}
 }
-@media only screen and (max-width:299px){
+@media only screen and (max-width:329px){
 	#banner .title{display:none;}
 	#slider{font-size:1.3em;}
 }

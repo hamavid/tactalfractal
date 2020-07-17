@@ -151,7 +151,6 @@ var scrollme = ( function( $ )
 
 	// ----------------------------------------------------------------------------------------------------
 	// Update elements
-
 	_this.update = function()
 	{
 		window.requestAnimationFrame( function()
@@ -163,12 +162,25 @@ var scrollme = ( function( $ )
 				_this.update_elements_in_view();
 				_this.animate();
 
-				// HH hack to set puzzle-a to fully solved if we get to textpocket
-				var inview = _this.elements_in_view[0];
-				if (inview != undefined) {
-					if (inview['element'].attr('id') === 'textpocket') {
+				// HH hacks:
+				var firstinview = _this.elements_in_view[0];
+				if (firstinview != undefined) {
+					var puzzb = $('#puzzle-b>svg>g');
+					// If we get to textpocket, set puzzle-a to fully solved 
+					if (firstinview['element'].attr('id') === 'textpocket') {
 						$('#puzzle-a path.animateme').css('transform','translate(0px, 0px');
 					}
+					// If we get to holder1, set puzzle-b to fully zoomed
+					if (firstinview['element'].attr('id') === 'holder1') {
+						puzzb.css('transform','scale(1,1)'); 
+					}
+					/*// If we get to holder3
+					if (firstinview['element'].attr('id') === 'holder3') {
+						// Set puzzle-b to fully solved
+						$('#puzzle-b>svg>g>g.animateme').css('transform','translate(0px, 0px');
+						// Set puzzle-b to fully unzoomed
+						puzzb.css('transform','translate(290px, 272px) scale(0.25,0.25)');
+					}*/
 				}
 			}
 
@@ -256,7 +268,7 @@ var scrollme = ( function( $ )
 				}
 
 				// Update properties
-
+				// HH TO ADD: VENDOR PREFIXES?
 				effect.element.css(
 				{
 					'transform' : 'translate( '+translatex+'px , '+translatey+'px ) scale( '+scale+' , '+scale+' )'
