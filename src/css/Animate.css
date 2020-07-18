@@ -11,39 +11,32 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 
 /* WORDS */
-#wantmore{
-	border-radius:10px;
-	top:50%;left:50%;
-	-webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
+.textpocket{position:relative;height:50%;}
+#wantmore{top:0;}
+#instructions{bottom:0;}
 #wantmore a{text-decoration: underline;}
-#instructions{
-	border-bottom-left-radius:10px;border-bottom-right-radius:10px;
-	top:0;left:50%;
-	-webkit-transform: translate(-50%);
-	-moz-transform: translate(-50%);
-    -ms-transform: translate(-50%);
-    -o-transform: translate(-50%);
-    transform: translate(-50%);}}
 #instructions i {padding:0 0.6em;}
 #instructions, #wantmore{
-	opacity:0;
+	opacity:1;
 	display:none;font-size:1.2em;
 	width:90%;max-width:500px;
 	margin:auto;padding:0.7em;
 	z-index:3;
+	position:absolute;
 	background:rgba(220,220,220,0.8);
-	position:fixed;
+	border-radius:10px;
+	left:50%;
+	-webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
 
 
 /* PUZZLES */
 
-#pa,#pb,#holder1,#holder2,#holder3,#textpocket,#puzzle-a,#puzzle-b,#puzzle-b-solved{height:0;}
+#pa,#pb,#holder1,#holder2,#holder3,#titlepocket,#puzzle-a,#puzzle-b,#puzzle-b-solved{height:0;}
 #puzzle-a,#puzzle-b,#puzzle-b-solved{
 	opacity: 0;
 	position:fixed;top:50%;left:50%;
@@ -99,7 +92,7 @@ path{fill:#fff;stroke-width:1.6;}
 
 
 /* BANNER AND LINKS */
-#textpocket{width:100%;}
+#titlepocket{width:100%;}
 #banner{
 	position:fixed;top:0;left:0;
 	width:100%;margin:auto;

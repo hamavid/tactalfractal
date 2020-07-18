@@ -10,9 +10,9 @@
 	// make elements proper heights
 	$('#pa').css('height','200%');
 	$('#pb').css('height','350%');
-	$('#holder1,#holder2,#puzzle-a,#puzzle-b,#puzzle-b-solved').css('height','100%');
-	$('#textpocket').css('height','99%');
-	$('#holder3').css('height','100%');
+	$('#holder0,#holder1,#holder2,#puzzle-a,#puzzle-b,#puzzle-b-solved').css('height','100%');
+	$('#titlepocket').css('height','99%');
+	$('#holder3').css('height','50%');
 	
 	// call the svgs for puzzles
 	d3.svg("../svgs/puzzle-a-withdata.svg").then(function(xml) {
@@ -31,14 +31,14 @@
 
 // function to get window info
 	function getwindowinfo() {
-		var texttop = document.getElementById('textpocket').getBoundingClientRect().top;
+		var titletop = document.getElementById('titlepocket').getBoundingClientRect().top;
 		var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 		var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 		var bannerthresh = 61;
 		if (vw < 600 || vh < 500){var bannerthresh = 54;}
 		if (vw < 450 || vh < 400){var bannerthresh = 42;}
 		return {
-	        texttop: texttop,
+	        titletop: titletop,
 	        vh: vh,
 	        bannerthresh: bannerthresh
 	    };
@@ -71,17 +71,17 @@ $(document).ready(function(){
 
 		// get window info
 		var windowinfo = getwindowinfo();
-		var texttop = windowinfo.texttop;
+		var titletop = windowinfo.titletop;
 		var vh = windowinfo.vh;
 		var bannerthresh = windowinfo.bannerthresh;
 
 	// PUZZLES
 		// Switch from puzzle a to b when the top of the text pocket hits the bottom of the viewport on its way in
-		if (texttop < vh) {
+		if (titletop < vh) {
 			// fadeout puzzle a
 			puzza.css('opacity',0);
 			// If we are at the end, ensure puzzb is correctly zoomed and solved, then hide it and show solved one
-			if (texttop < -4.49*vh) {
+			if (titletop < -4.49*vh) {
 				$('#puzzle-b>svg g.animateme').css('transform','translate(0px, 0px)');
 				$('#puzzle-b>svg>g').css('transform','translate(290px, 272px) scale(0.25,0.25)');
 				puzzbs.css('opacity',1);
@@ -99,20 +99,20 @@ $(document).ready(function(){
 		
 	// INSTRUCTIONS/WANTMORE
 		// control opacity of instructions bar at top and wantmore bar at bottom
-		if (texttop>2.7*vh) {instructions.css('opacity',1);wantmore.css('opacity',0);}
+		/*if (texttop>4*vh) {instructions.css('opacity',1);wantmore.css('opacity',0);}
 		else {
-			if (texttop<-4.9*vh) {
+			if (texttop<-6*vh) {
 				wantmore.css('opacity',1);
 			} else {
 				wantmore.css('opacity',0);
 			}
 			instructions.css('opacity',0);
-		}
+		}*/
 		
 		
 	// BANNER/SLIDER
 		// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
-		if (texttop <= bannerthresh) {
+		if (titletop <= bannerthresh) {
 			slider.addClass('disappear');banner.removeClass('disappear');$('#puzzle-a>svg,#puzzle-b>svg').addClass('shift');
 		} 
 		// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
