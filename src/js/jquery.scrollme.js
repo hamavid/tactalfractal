@@ -77,12 +77,12 @@ var scrollme = ( function( $ )
 
 		// Load all elements to animate
 
-		//_this.init_elements(); // HH commenting out because not relevant for our purposes and does double duty
+		_this.init_elements(); 
 
 		// Get element & viewport sizes
 
-		// _this.on_resize(); // HH commenting out because not relevant for our purposes and does double duty
-
+		_this.on_resize();
+		
 		// Recalculate heights & positions on resize and rotate
 
 		$window.on( 'resize orientationchange' , function(){ _this.on_resize(); } );
@@ -90,7 +90,11 @@ var scrollme = ( function( $ )
 		// Recalculate heights & positions when page is fully loaded + a bit just in case
 
 		$window.load( function(){ 
-			setTimeout( function(){_this.init_elements();_this.on_resize(); } , 100 ) // HH added init_elements after delay so d3 can add svg
+			setTimeout( function(){
+			_this.init_elements();
+			_this.on_resize();
+			_this.update();
+			} , 100 ) // HH added more fxns after delay so d3 can add svg, things catch up
 		});
 
 		// Start animating
@@ -124,7 +128,6 @@ var scrollme = ( function( $ )
 				var effect = {};
 
 				effect.element = $( this );
-				//console.log(effect.element);
 
 				effect.when = effect.element.data( 'when' );
 				effect.from = effect.element.data( 'from' );
@@ -161,20 +164,6 @@ var scrollme = ( function( $ )
 			{
 				_this.update_elements_in_view();
 				_this.animate();
-
-				// HH hacks:
-				var firstinview = _this.elements_in_view[0];
-				if (firstinview != undefined) {
-					var puzzb = $('#puzzle-b>svg>g');
-					// If we get to textpocket, set puzzle-a to fully solved 
-					if (firstinview['element'].attr('id') === 'textpocket') {
-						$('#puzzle-a path.animateme').css('transform','translate(0px, 0px');
-					}
-					// If we get to holder1, set puzzle-b to fully zoomed
-					if (firstinview['element'].attr('id') === 'holder1') {
-						puzzb.css('transform','scale(1,1)'); 
-					}
-				}
 			}
 
 			_this.viewport_top_previous = _this.viewport_top;
@@ -193,15 +182,14 @@ var scrollme = ( function( $ )
 		for( var i=0 ; i<elements_in_view_length ; i++ )
 		{
 			var element = _this.elements_in_view[i];
-
 			// For each effect
 
 			var effects_length = element.effects.length;
-
+			
 			for( var e=0 ; e<effects_length ; e++ )
 			{
+				
 				var effect = element.effects[e];
-
 				// Get effect animation boundaries
 
 				switch( effect.when )
@@ -231,7 +219,7 @@ var scrollme = ( function( $ )
 				// Get scroll position of reference selector
 
 				var scroll = ( _this.viewport_top - start ) / ( end - start );
-				//console.log(scroll);
+				
 				// Get relative scroll position for effect
 
 				var from = effect[ 'from' ];

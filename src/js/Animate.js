@@ -3,30 +3,27 @@
 
 // Set up stuff - defaults are for no js
 	// disappear nojs version
-	$('#nojs').css('display','none').css('height',0);
+	$('div#nojs').css('display','none').css('height',0);
 	// disappear the banner and appear the slider
-	$('#banner').addClass('disappear');
-	$('#slider').removeClass('disappear');
+	$('div#banner').addClass('disappear');
+	$('div#slider').removeClass('disappear');
 	// make elements proper heights
-	$('#pa').css('height','200%');
-	$('#pb').css('height','350%');
-	$('#holder0,#holder1,#holder2,#puzzle-a,#puzzle-b,#puzzle-b-solved').css('height','100%');
-	$('#titlepocket').css('height','99%');
-	$('#holder3').css('height','50%');
+	$('div#pa').css('height','300%');
+	$('div#pb').css('height','400%');
+	$('div#titlepocket,div#puzzle-a,div#puzzle-b').css('height','100%');
+	$('div.textpocket').css('height','50%');
+	$('div.holder').css('height','110%');
 	
 	// call the svgs for puzzles
 	d3.svg("../svgs/puzzle-a-withdata.svg").then(function(xml) {
-		d3.select("#puzzle-a").node().appendChild(xml.documentElement);
+		d3.select("div#puzzle-a").node().appendChild(xml.documentElement);
 	});
 	d3.svg("../svgs/puzzle-b-withdata.svg").then(function(xml) {
-		d3.select("#puzzle-b").node().appendChild(xml.documentElement);
+		d3.select("div#puzzle-b").node().appendChild(xml.documentElement);
 	});
-	d3.svg("../svgs/puzzle-b-solved.svg").then(function(xml) {
-		d3.select("#puzzle-b-solved").node().appendChild(xml.documentElement);
-	});
-
+	
 	// show instructions and wantmore bars
-	$('#instructions, #wantmore').css('display','block');
+	$('div#instructions, div#wantmore').css('display','block');
 
 
 // function to get window info
@@ -44,27 +41,21 @@
 	    };
 	}
 
-// control location of instructions bar on small screens 
-//(centered so it isn't hidden below bottom of visible page)
-
-
-
 
 $(document).ready(function(){
 
 	// set vars
-	var puzza = $('#puzzle-a');
-	var puzzb = $('#puzzle-b');
-	var puzzbs = $('#puzzle-b-solved');
-	var wantmore = $('#wantmore');
-	var instructions = $('#instructions');
-	var banner = $('#banner');
-	var slider = $('#slider');
+	var puzza = $('div#puzzle-a');
+	var puzzb = $('div#puzzle-b');
+	var wantmore = $('div#wantmore');
+	var instructions = $('div#instructions');
+	var banner = $('div#banner');
+	var slider = $('div#slider');
 
 	// show puzzle a
 	puzza.css('opacity',1);
 	
-	/* SWITCH THINGS UP */
+	//SWITCH THINGS UP 
 	scrollControl();
 	$(window).bind('scroll resize', scrollControl);
 	function scrollControl() {
@@ -77,47 +68,18 @@ $(document).ready(function(){
 
 	// PUZZLES
 		// Switch from puzzle a to b when the top of the text pocket hits the bottom of the viewport on its way in
-		if (titletop < vh) {
-			// fadeout puzzle a
-			puzza.css('opacity',0);
-			// If we are at the end, ensure puzzb is correctly zoomed and solved, then hide it and show solved one
-			if (titletop < -4.49*vh) {
-				$('#puzzle-b>svg g.animateme').css('transform','translate(0px, 0px)');
-				$('#puzzle-b>svg>g').css('transform','translate(290px, 272px) scale(0.25,0.25)');
-				puzzbs.css('opacity',1);
-			} 
-			// Otherwise, show puzzb and hide solved version
-			else{
-				puzzb.css('opacity',1);puzzbs.css('opacity',0);
-			}
-				
-		}
+		if (titletop < vh) {puzza.css('opacity',0);puzzb.css('opacity',1);}
 		// Switch from b to a when it gets below the top of the viewport when scrolling back up
-		else {
-			puzza.css('opacity',1);puzzb.css('opacity',0);puzzbs.css('opacity',0);
-		}
-		
-	// INSTRUCTIONS/WANTMORE
-		// control opacity of instructions bar at top and wantmore bar at bottom
-		/*if (texttop>4*vh) {instructions.css('opacity',1);wantmore.css('opacity',0);}
-		else {
-			if (texttop<-6*vh) {
-				wantmore.css('opacity',1);
-			} else {
-				wantmore.css('opacity',0);
-			}
-			instructions.css('opacity',0);
-		}*/
-		
-		
+		else {puzza.css('opacity',1);puzzb.css('opacity',0);}
+	
 	// BANNER/SLIDER
 		// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
 		if (titletop <= bannerthresh) {
-			slider.addClass('disappear');banner.removeClass('disappear');$('#puzzle-a>svg,#puzzle-b>svg').addClass('shift');
+			slider.addClass('disappear');banner.removeClass('disappear');$('div#puzzle-a>svg,div#puzzle-b>svg').addClass('shift');
 		} 
 		// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
 		else {
-			banner.addClass('disappear');slider.removeClass('disappear');$('#puzzle-a>svg,#puzzle-b>svg').removeClass('shift');
+			banner.addClass('disappear');slider.removeClass('disappear');$('div#puzzle-a>svg,div#puzzle-b>svg').removeClass('shift');
 		}
 	}
 

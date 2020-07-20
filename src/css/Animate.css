@@ -11,7 +11,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 
 /* WORDS */
-.textpocket{position:relative;height:50%;}
+#bigone{height:1000%;}
+#smallone{height:10%;}
 #wantmore{top:0;}
 #instructions{bottom:0;}
 #wantmore a{text-decoration: underline;}
@@ -35,9 +36,9 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 
 /* PUZZLES */
-
-#pa,#pb,#holder1,#holder2,#holder3,#titlepocket,#puzzle-a,#puzzle-b,#puzzle-b-solved{height:0;}
-#puzzle-a,#puzzle-b,#puzzle-b-solved{
+.textpocket{position:relative;}
+.holder,#titlepocket,#puzzle-a,#puzzle-b,{height:0;}
+#puzzle-a,#puzzle-b{
 	opacity: 0;
 	position:fixed;top:50%;left:50%;
 	width:100%;max-width:900px;
@@ -48,7 +49,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#instructions,#puzzle-a,#puzzle-b,#puzzle-b-solved,#wantmore{
+#instructions,#puzzle-a,#puzzle-b,#wantmore{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
