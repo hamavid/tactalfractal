@@ -44,44 +44,56 @@
 
 $(document).ready(function(){
 
-	// set vars
-	var puzza = $('div#puzzle-a');
-	var puzzb = $('div#puzzle-b');
-	var wantmore = $('div#wantmore');
-	var instructions = $('div#instructions');
-	var banner = $('div#banner');
-	var slider = $('div#slider');
+	// Do stuff when page is fully loaded + a bit just in case
+	$(window).load( function(){ 
+		setTimeout( function(){
+			// set vars
+			var puzza = $('div#puzzle-a');
+			var puzzbstill = $('div#puzzle-b>svg>g>g.still');
+			var puzzbanim = $('div#puzzle-b>svg>g>g.animateme');
+			var banner = $('div#banner');
+			var slider = $('div#slider');
 
-	// show puzzle a
-	puzza.css('opacity',1);
+			// show puzzle a
+			puzza.css('opacity',1);
+
+			//SWITCH THINGS UP 
+			scrollControl();
+			$(window).bind('scroll resize', scrollControl);
+			function scrollControl() {
+
+				// get window info
+				var windowinfo = getwindowinfo();
+				var titletop = windowinfo.titletop;
+				var vh = windowinfo.vh;
+				var bannerthresh = windowinfo.bannerthresh;
+
+			// PUZZLES
+				// Switch from puzzle a to b when the top of the text pocket hits the bottom of the viewport on its way in
+				if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}
+				// Switch from b to a when it gets below the top of the viewport when scrolling back up
+				else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
+			
+			// BANNER/SLIDER
+				// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
+				if (titletop <= bannerthresh) {
+					slider.addClass('disappear');
+					banner.removeClass('disappear');
+					$('div#puzzle-a>svg,div#puzzle-b>svg').addClass('shift');
+					puzzbanim.css('opacity',1);
+				} 
+				// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
+				else {
+					banner.addClass('disappear');
+					slider.removeClass('disappear');
+					$('div#puzzle-a>svg,div#puzzle-b>svg').removeClass('shift');
+					puzzbanim.css('opacity',0);
+				}
+			}
+
+		} , 100 ) 
+
+	});
 	
-	//SWITCH THINGS UP 
-	scrollControl();
-	$(window).bind('scroll resize', scrollControl);
-	function scrollControl() {
-
-		// get window info
-		var windowinfo = getwindowinfo();
-		var titletop = windowinfo.titletop;
-		var vh = windowinfo.vh;
-		var bannerthresh = windowinfo.bannerthresh;
-
-	// PUZZLES
-		// Switch from puzzle a to b when the top of the text pocket hits the bottom of the viewport on its way in
-		if (titletop < vh) {puzza.css('opacity',0);puzzb.css('opacity',1);}
-		// Switch from b to a when it gets below the top of the viewport when scrolling back up
-		else {puzza.css('opacity',1);puzzb.css('opacity',0);}
-	
-	// BANNER/SLIDER
-		// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
-		if (titletop <= bannerthresh) {
-			slider.addClass('disappear');banner.removeClass('disappear');$('div#puzzle-a>svg,div#puzzle-b>svg').addClass('shift');
-		} 
-		// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
-		else {
-			banner.addClass('disappear');slider.removeClass('disappear');$('div#puzzle-a>svg,div#puzzle-b>svg').removeClass('shift');
-		}
-	}
-
 });
 
