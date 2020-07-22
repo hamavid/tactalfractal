@@ -8,11 +8,11 @@
 	$('div#banner').addClass('disappear');
 	$('div#slider').removeClass('disappear');
 	// make elements proper heights
-	$('div#pa').css('height','300%');
-	$('div#pb').css('height','400%');
+	$('div#pa').css('height','410%');
+	$('div#pb').css('height','450%');
 	$('div#titlepocket,div#puzzle-a,div#puzzle-b').css('height','100%');
 	$('div.textpocket').css('height','50%');
-	$('div.holder').css('height','110%');
+	//$('div.holder').css('height','110%');
 	
 	// call the svgs for puzzles
 	d3.svg("../svgs/puzzle-a-withdata.svg").then(function(xml) {
