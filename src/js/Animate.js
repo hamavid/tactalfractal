@@ -19,7 +19,7 @@
 		d3.select("div#puzzle-a").node().appendChild(xml.documentElement);
 	});
 	d3.svg("../svgs/puzzle-b-withdata.svg").then(function(xml) {
-		d3.select("div#puzzle-b").node().appendChild(xml.documentElement);
+		d3.select("div#puzzle-b>div").node().appendChild(xml.documentElement);
 	});
 	
 	// show instructions and wantmore bars
@@ -49,8 +49,8 @@ $(document).ready(function(){
 		setTimeout( function(){
 			// set vars
 			var puzza = $('div#puzzle-a');
-			var puzzbstill = $('div#puzzle-b>svg>g>g.still');
-			var puzzbanim = $('div#puzzle-b>svg>g>g.animateme');
+			var puzzbstill = $('div#puzzle-b>div>svg>g>g.still');
+			var puzzbanim = $('div#puzzle-b>div>svg>g>g.animateme');
 			var banner = $('div#banner');
 			var slider = $('div#slider');
 
@@ -79,14 +79,14 @@ $(document).ready(function(){
 				if (titletop <= bannerthresh) {
 					slider.addClass('disappear');
 					banner.removeClass('disappear');
-					$('div#puzzle-a>svg,div#puzzle-b>svg').addClass('shift');
+					$('div#puzzle-a>div>svg,div#puzzle-b>div>svg').addClass('shift');
 					puzzbanim.css('opacity',1);
 				} 
 				// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
 				else {
 					banner.addClass('disappear');
 					slider.removeClass('disappear');
-					$('div#puzzle-a>svg,div#puzzle-b>svg').removeClass('shift');
+					$('div#puzzle-a>div>svg,div#puzzle-b>div>svg').removeClass('shift');
 					puzzbanim.css('opacity',0);
 				}
 			}

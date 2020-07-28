@@ -241,19 +241,17 @@ var scrollme = ( function( $ )
 				var scale      = _this.animate_value( scroll , scroll_eased , from , to , effect , 'scale' );
 			
 				// Override scale values
-
+				// Update properties
+				// HH adding to separate scale and transform effects since in this situation it is only one or the other
+				// HH TO ADD: VENDOR PREFIXES?
 				if( 'scale' in effect.properties )
 				{
 					scalex = scale;
 					scaley = scale;
+					effect.element.css({'transform' : 'scale( '+scale+' , '+scale+' )'});
+				} else {
+					effect.element.css({'transform' : 'translate( '+translatex+'px , '+translatey+'px )'});
 				}
-
-				// Update properties
-				// HH TO ADD: VENDOR PREFIXES?
-				effect.element.css(
-				{
-					'transform' : 'translate( '+translatex+'px , '+translatey+'px ) scale( '+scale+' , '+scale+' )'
-				} );
 
 			}
 		}

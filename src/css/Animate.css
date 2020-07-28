@@ -37,7 +37,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* PUZZLES */
 .textpocket{position:relative;}
-.holder,#titlepocket,#puzzle-a,#puzzle-b,{height:0;}
+.holder,#titlepocket,#puzzle-a,#puzzle-b{height:0;}
 #puzzle-a{opacity:0;}
 #puzzle-a,#puzzle-b{
 	position:fixed;top:50%;left:50%;
@@ -49,8 +49,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#puzzle-b>svg>g>g.still,#puzzle-b>svg>g>g.animateme{opacity:0;}
-#puzzle-a,#puzzle-b>svg>g>g.still,#puzzle-b>svg>g>g.animateme{
+#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{opacity:0;}
+#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
@@ -59,7 +59,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 }
 svg{
 	display: block;
-	position:relative;top:0;left:0;
+	position:relative;
 	width:100%;height:100%;margin:auto;
 	-webkit-transition:top 0.3s;
 	-moz-transition:top 0.3s;
@@ -67,7 +67,7 @@ svg{
     -o-transition:top 0.3s;
 	transition:top 0.3s;
 }
-svg.shift{top:31px;}
+.shift{margin-top:31px;}
 svg>g{
 	display:block; transform:scale(1,1);
 	position:absolute;top:0;left:0;
@@ -153,18 +153,14 @@ path{fill:#fff;stroke-width:1.6;}
 
 /* SMALL SCREENS */
 @media only screen and (max-width:599px), screen and (max-height:499px){
-	#banner {font-size:1.7em;}
-	#banner .link a{margin:0.1em 1.7em;}
-	svg.shift{top:27px;}
+	#banner .link a{margin:0.1em 1.7em;padding:0.1em 0.2em 0.2em 0.2em;}
 }
 @media only screen and (max-width:449px), screen and (max-height:399px){
-	#banner {font-size:1.4em;}
-	#banner .link a{margin:0.1em 1.3em;}
-	svg.shift{top:21px;}
+	#banner .link a{margin:0.3em;padding:0.1em;}
 	#slider{font-size:1.8em;}
 }
 @media only screen and (max-width:329px){
+	#banner .link a{margin:0.5em;padding:0.1em;}
 	#banner .title{display:none;}
-	#slider{font-size:1.3em;}
 }
 
