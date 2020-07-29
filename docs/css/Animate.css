@@ -2,17 +2,17 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* NO JS VERSION */
 #nojs div.spacer{height:61px;}
-#nojs div.footer{height:61px;width:100%;background:rgba(220,220,220,0.8);}
+/*#nojs div.footer{height:61px;width:100%;background:rgba(220,220,220,0.8);}*/
 #nojs img{
 	width:500px;max-width:80%;
 	padding:1em;margin:auto;
 }
-#nojs p{padding:1em;}
+#nojs img.unsolved{
+	width:900px;max-width:100%;
+}
 
 
 /* WORDS */
-#bigone{height:1000%;}
-#smallone{height:10%;}
 #wantmore{top:0;}
 #instructions{bottom:0;}
 #instructions a,#wantmore a{text-decoration: underline;}
@@ -37,11 +37,11 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* PUZZLES */
 .textpocket{position:relative;}
-.holder,#titlepocket,#puzzle-a,#puzzle-b{height:0;}
+#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b{height:0;}
 #puzzle-a{opacity:0;}
 #puzzle-a,#puzzle-b{
 	position:fixed;top:50%;left:50%;
-	width:100%;max-width:900px;
+	width:100%;
 	margin:auto;
 	-webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -155,11 +155,11 @@ path{fill:#fff;stroke-width:1.6;}
 @media only screen and (max-width:599px), screen and (max-height:499px){
 	#banner .link a{margin:0.1em 1.7em;padding:0.1em 0.2em 0.2em 0.2em;}
 }
-@media only screen and (max-width:449px), screen and (max-height:399px){
-	#banner .link a{margin:0.3em;padding:0.1em;}
+@media only screen and (max-width:474px), screen and (max-height:399px){
+	#banner .link a{margin:0.4em;padding:0.1em;}
 	#slider{font-size:1.8em;}
 }
-@media only screen and (max-width:329px){
+@media only screen and (max-width:349px){
 	#banner .link a{margin:0.5em;padding:0.1em;}
 	#banner .title{display:none;}
 }

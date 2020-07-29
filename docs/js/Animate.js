@@ -8,6 +8,8 @@
 	$('div#banner').addClass('disappear');
 	$('div#slider').removeClass('disappear');
 	// make elements proper heights
+	$('div#bigone').css('height','1000%');
+	$('div#smallone').css('height','10%');
 	$('div#pa').css('height','410%');
 	$('div#pb').css('height','450%');
 	$('div#titlepocket,div#puzzle-a,div#puzzle-b').css('height','100%');
