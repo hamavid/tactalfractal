@@ -19,7 +19,7 @@ metalsmith(__dirname)
   .use(markdown())
   .use(permalinks({
       relative: false,
-      pattern: ':title',
+      pattern: ':url',
     }))
   .use(layouts({
             engine: 'handlebars',

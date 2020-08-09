@@ -24,7 +24,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 	margin:auto;padding:0.7em;
 	z-index:3;
 	position:absolute;
-	background:rgba(220,220,220,0.8);
+	background:rgba(220,220,220,0.9);
 	border-radius:10px;
 	left:50%;
 	-webkit-transform: translate(-50%, 0);
@@ -37,9 +37,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* PUZZLES */
 .textpocket{position:relative;}
-#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b{height:0;}
-#puzzle-a{opacity:0;}
-#puzzle-a,#puzzle-b{
+#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-border{height:0;}
+#puzzle-a,#puzzle-b,#puzzle-b-border{
 	position:fixed;top:50%;left:50%;
 	width:100%;
 	margin:auto;
@@ -49,8 +48,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{opacity:0;}
-#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{
+#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{opacity:0;}
+#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-border path{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
@@ -83,6 +82,11 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:stroke-width 0.5s;
 	transition:stroke-width 0.5s;
 }
+#puzzle-b-border path{fill: rgba(255,255,255,0);}
+#lvl2{stroke-width:4;opacity:0;}
+#lvl1{stroke-width:2.6;opacity:0;}
+#lvl0{stroke-width:1.8;opacity:0;}
+
 
 /* puzzle piece colors */
 /*#pa .j,#pb .a path,#pb .c path,#pb .e path,#pb .g path,#pb .h path,#pb .j path,#pb .l path,#pb .n path,#pb .p path, #pb .q path,#pb .r path,#pb .t path,#pb .u path{

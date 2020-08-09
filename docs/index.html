@@ -1,65 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset='utf-8'>
-    <title>TactalFractal</title>
-	<meta name='keywords' content='tactalfractal, tactile, fractal, puzzle, jigsaw, games, math, kids, meta'/>
-	<link rel='icon' href='./images/favicon-32x32.png'>
-	<link rel='canonical' href=''>
-	<meta id='viewport' name='viewport' content='width=device-width, initial-scale=1'/>
-	<!-- STYLES -->
-	<link rel='stylesheet' type='text/css' href='./css/general_style.css'/>
-	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oxygen'/>
-	<link rel='stylesheet' type='text/css' href='./css/font-awesome.min.css'/>
-	<!-- page-specific stylesheets -->
-	<link rel='stylesheet' type='text/css' href='./css/Home.css'/>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- SCRIPTS -->
-	<script type='text/javascript' src='./js/jquery-3.1.1.min.js'></script>
-	<script type='text/javascript' src='./js/general_fxns.js'></script>
-	<!-- page-specific scripts -->
-</head>
-	<!--////////////////////////////////////////////////////////////////// -->
-
-<body>
-		<header>
-		  <div class='navbar-bars' style='display:none;'><i class='fa fa-bars fa-2x'></i> <span></span></div>
-		  <div class='name'><a href='.'><img src='./images/tactalfractal-outline.png' title='TactalFractal' alt-text='TactalFractal'></a></div>
-		<p class='line'></p>
-		<!--Navbar for big screens -->
-		  <nav class='bignavlinks'>
-		  	  <a class='home-select' href='.'>Home</a>
-		  	  <a class='about-select' href='./about'>About</a>
-		  	  <a class='play-select' href='./play'>Play</a>
-		  	  <a class='shop-select' href='https://www.etsy.com/shop/tactalfractal/'>Shop</a>
-		  </nav>
+	<head>
+	    <meta charset='utf-8'>
+	    <title>TactalFractal</title>
+		<meta name='keywords' content='tactalfractal, tactile, fractal, puzzle, jigsaw, games, math, kids, meta'/>
+		<link rel='icon' href='../images/favicon-32x32.png'>
+		<link rel='canonical' href=''>
+		<meta id='viewport' name='viewport' content='width=device-width, initial-scale=1'/>
+		<!-- STYLES -->
+		<link rel='stylesheet' type='text/css' href='../css/general_style.css'/>
+		<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oxygen'/>
+		<link rel='stylesheet' type='text/css' href='../css/font-awesome.min.css'/>
+		<!-- page-specific stylesheets -->
+		<link rel='stylesheet' type='text/css' href='../css/Animate.css'/>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
 		
-		<!-- Alt navbar (slide down from bars, for small screens) -->
-			<nav class='smallnavlinks' style='display:none;'>
-			<ul>
-			  <a class='home-select' href='.'><li>Home</li></a>
-			  <a class='about-select' href='./about'><li>About</li></a>
-			  <a class='play-select' href='./play'><li>Play</li></a>
-			  <a class='shop-select' href='https://www.etsy.com/shop/tactalfractal/'><li>Shop</li></a>
-			</ul>
-			</nav>
-		</header>
-		<!-- Overlay effect when opening topnav on small screens -->
-		<div class='overlay' title='close menu' id='overlaybkgrnd'></div>
-		<div class="page-content">
-		<div class="wrapper">
-			    <div class='image'>
-<img id='fourpieces' src='./images/biglines-color.png'>
+	</head>
+	
+		<!--////////////////////////////////////////////////////////////////// -->	<body>
+
+<!-- JS DISABLED VERSION -->
+<div id="nojs">
+	<div class="spacer"></div>
+	<img class="unsolved" src="../images/puzzaapart.png">
+	<img src="../images/puzzasolved.png">
+	<img class="unsolved" src="../images/puzzbapart.png">
+	<img src="../images/puzzbsolved.png">
 </div>
 
-<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/6cf616f88ecf7d71b0c0219f2/66bff4d809a8183768a15e978.js");</script>
+<div class="scrollme" id="bigone">
+	<div id="smallone">
+		<!-- LEVEL ONE PUZZLE -->
+		<div class="textpocket">
+			<div id="instructions"><i class="fa fa-arrow-down" aria-hidden="true"></i><b>Scroll down</b><i class="fa fa-arrow-down" aria-hidden="true"></i><br>or <a href="#wantmore">click to skip</a></div>
+		</div>
+		<div class="container" id="pa">
+			<div id="puzzle-a">
+			</div>
+		</div>
 
+		<!-- TITLE BANNER WITH LINKS -->
+		<div id="titlepocket">
+			<div id="slider" class="disappear"><span class='title'>TactalFractal</span></div>
+			<div id="banner">
+				<span class='link'><a href='./play'>play</a></span>
+				<span class='title'>TactalFractal</span>
+				<span class='link'><a href='http://tactalfractal.etsy.com'>shop</a></span>
+			</div>
+		</div>
 
+		<!-- LEVEL TWO PUZZLE -->
+		<div class="container" id="pb">
+			<div id="puzzle-b">
+				<div class="container" style="transform:scale(4);">
+				</div>
+			</div>
 		</div>
+
+		<!--borders for levl2 -->
+		<div id="puzzle-b-border">
 		</div>
-		<footer class='container padding-16'>
-		<div class='cp'>
-		<span>Copyright 2020 TactalFractal</span>
+
+		<!-- END NOTES -->
+		<div class="textpocket">
+			<div id="wantmore">
+			Want more? Visit the <a href='http://tactalfractal.etsy.com'>SHOP</a> to buy a puzzle, or check out the <a href='./play'>PLAY</a> page for more games.
+			</div>
 		</div>
-		</footer>	</body>
+	</div>
+</div>
+	<!-- END OF PAGE SCRIPTS -->
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+	<script type='text/javascript' src='../js/d3.min.js'></script>
+	<script type='text/javascript' src='../js/Animate.js'></script>
+	<script src="./js/jquery.scrollme.js"></script>
+	
+
+	</body>
 </html>

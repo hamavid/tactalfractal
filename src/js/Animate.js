@@ -9,7 +9,7 @@
 	$('div#smallone').css('height','9.4%'); // reciprocal of total heights (scales it to 100%)
 	$('div#pa').css('height','410%');
 	$('div#pb').css('height','450%');
-	$('div#titlepocket,div#puzzle-a,div#puzzle-b').css('height','100%');
+	$('div#titlepocket,div#puzzle-a,div#puzzle-b,div#puzzle-b-border').css('height','100%');
 	$('div.textpocket').css('height','50%');
 	
 	// call the svgs for puzzles
@@ -19,6 +19,9 @@
 	d3.svg("../svgs/puzzle-b-withdata.svg").then(function(xml) {
 		d3.select("div#puzzle-b>div").node().appendChild(xml.documentElement);
 	});
+	d3.svg("../svgs/web_outline_three_pieces.svg").then(function(xml) {
+		d3.select("div#puzzle-b-border").node().appendChild(xml.documentElement);
+	});
 	
 	// show instructions and wantmore bars
 	$('div#instructions, div#wantmore').css('display','block');
@@ -27,11 +30,13 @@
 // function to get window info
 	function getwindowinfo() {
 		var titletop = document.getElementById('titlepocket').getBoundingClientRect().top;
+		var wantmoretop = document.getElementById('wantmore').getBoundingClientRect().top;
 		var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 		var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 		var bannerthresh = 61;
 		return {
 	        titletop: titletop,
+	        wantmoretop: wantmoretop,
 	        vh: vh,
 	        bannerthresh: bannerthresh
 	    };
@@ -47,11 +52,14 @@ $(document).ready(function(){
 			var puzza = $('div#puzzle-a');
 			var puzzbstill = $('div#puzzle-b>div>svg>g>g.still');
 			var puzzbanim = $('div#puzzle-b>div>svg>g>g.animateme');
+			var lvl2 = $('path#lvl2');
+			var lvl1 = $('path#lvl1');
+			var lvl0 = $('path#lvl0');
 			var banner = $('div#banner');
 			var slider = $('div#slider');
 
 			// show puzzle a
-			puzza.css('opacity',1);
+			//puzza.css('opacity',1);
 
 			//SWITCH THINGS UP 
 			scrollControl();
@@ -61,6 +69,7 @@ $(document).ready(function(){
 				// get window info
 				var windowinfo = getwindowinfo();
 				var titletop = windowinfo.titletop;
+				var wantmoretop = windowinfo.wantmoretop;
 				var vh = windowinfo.vh;
 				var bannerthresh = windowinfo.bannerthresh;
 
@@ -69,7 +78,10 @@ $(document).ready(function(){
 				if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}
 				// Switch from b to a when it gets below the top of the viewport when scrolling back up
 				else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
-				// Add border to puzzle b at end
+				// Add borders to puzzle b at end
+				if (wantmoretop < 1.45 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (wantmoretop < 1.3 * vh) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
+				if (wantmoretop < 1.1 * vh) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
 			
 			// BANNER/SLIDER
 				// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
