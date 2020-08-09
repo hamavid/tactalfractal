@@ -13,13 +13,13 @@
 	$('div.textpocket').css('height','50%');
 	
 	// call the svgs for puzzles
-	d3.svg("../svgs/puzzle-a-withdata.svg").then(function(xml) {
+	d3.svg("./svgs/puzzle-a-withdata.svg").then(function(xml) {
 		d3.select("div#puzzle-a").node().appendChild(xml.documentElement);
 	});
-	d3.svg("../svgs/puzzle-b-withdata.svg").then(function(xml) {
+	d3.svg("./svgs/puzzle-b-withdata.svg").then(function(xml) {
 		d3.select("div#puzzle-b>div").node().appendChild(xml.documentElement);
 	});
-	d3.svg("../svgs/web_outline_three_pieces.svg").then(function(xml) {
+	d3.svg("./svgs/web_outline_three_pieces.svg").then(function(xml) {
 		d3.select("div#puzzle-b-border").node().appendChild(xml.documentElement);
 	});
 	
