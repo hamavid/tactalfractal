@@ -5,12 +5,14 @@
 	$('div#banner').addClass('disappear');
 	$('div#slider').removeClass('disappear');
 	// make elements proper heights
-	$('div#bigone').css('height','1060%'); // heights of all unfixed elements should add to this
-	$('div#smallone').css('height','9.4%'); // reciprocal of total heights (scales it to 100%)
-	$('div#pa').css('height','410%');
-	$('div#pb').css('height','450%');
-	$('div#titlepocket,div#puzzle-a,div#puzzle-b,div#puzzle-b-border').css('height','100%');
-	$('div.textpocket').css('height','50%');
+	$('div#bigone').css('height','1220%'); // heights of all unfixed elements should add to this
+	$('div#smallone').css('height','8.19%'); // reciprocal of total heights (scales it to 100%)
+	$('div#pa,div#pb').css('height','410%');
+	// titlepocket, pb-zoom, pb-borders are unfixed (so count toward total)
+	$('div#titlepocket,div#pb-zoom,div#pb-borders,div#puzzle-a,div#puzzle-b,div#puzzle-b-borders').css('height','100%');
+	$('div.textpocket').css('height','50%'); // two of these
+	// Total: 410+410+100+100+100+50+50 = 1220
+	// Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div
 	
 	// call the svgs for puzzles
 	d3.svg("./svgs/puzzle-a-withdata.svg").then(function(xml) {
@@ -20,7 +22,7 @@
 		d3.select("div#puzzle-b>div").node().appendChild(xml.documentElement);
 	});
 	d3.svg("./svgs/web_outline_three_pieces.svg").then(function(xml) {
-		d3.select("div#puzzle-b-border").node().appendChild(xml.documentElement);
+		d3.select("div#puzzle-b-borders").node().appendChild(xml.documentElement);
 	});
 	
 	// show instructions and wantmore bars
@@ -79,9 +81,9 @@ $(document).ready(function(){
 				// Switch from b to a when it gets below the top of the viewport when scrolling back up
 				else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
 				// Add borders to puzzle b at end
-				if (wantmoretop < 1.45 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
-				if (wantmoretop < 1.3 * vh) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
-				if (wantmoretop < 1.1 * vh) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
+				if (wantmoretop < 2.78 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (wantmoretop < 2.33 * vh) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
+				if (wantmoretop < 1.66 * vh) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
 			
 			// BANNER/SLIDER
 				// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in

@@ -37,8 +37,8 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 
 /* PUZZLES */
 .textpocket{position:relative;}
-#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-border{height:0;}
-#puzzle-a,#puzzle-b,#puzzle-b-border{
+#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-borders{height:0;}
+#puzzle-a,#puzzle-b,#puzzle-b-borders{
 	position:fixed;top:50%;left:50%;
 	width:100%;
 	margin:auto;
@@ -49,7 +49,7 @@ html,body,.container{width:100%;height:100%;margin:auto;}
     transform: translate(-50%, -50%);
 }
 #puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{opacity:0;}
-#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-border path{
+#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-borders path{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
@@ -82,7 +82,7 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:stroke-width 0.5s;
 	transition:stroke-width 0.5s;
 }
-#puzzle-b-border path{fill: rgba(255,255,255,0);}
+#puzzle-b-borders path{fill: rgba(255,255,255,0);}
 #lvl2{stroke-width:4;opacity:0;}
 #lvl1{stroke-width:2.6;opacity:0;}
 #lvl0{stroke-width:1.8;opacity:0;}
