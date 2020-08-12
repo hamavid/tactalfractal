@@ -12,6 +12,21 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 }
 
 
+/*HORIZONTAL STRIPES Background
+#bigone{
+width:100%;
+background: linear-gradient(
+  to bottom,
+  #5d9634,
+  #5d9634 50%,
+  #538c2b 50%,
+  #538c2b
+);
+background-size: 100% 20px;
+}
+*/
+#bigone{background-image: url('http://api.thumbr.it/whitenoise-361x370.png?background=#787878ff&noise=626262&density=68&opacity=100');}
+
 /* WORDS */
 #wantmore{top:0;}
 #instructions{bottom:0;}
