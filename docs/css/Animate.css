@@ -12,27 +12,15 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 }
 
 
-/*HORIZONTAL STRIPES Background
-#bigone{
-width:100%;
-background: linear-gradient(
-  to bottom,
-  #5d9634,
-  #5d9634 50%,
-  #538c2b 50%,
-  #538c2b
-);
-background-size: 100% 20px;
-}
-*/
-#bigone{background-image: url('http://api.thumbr.it/whitenoise-361x370.png?background=#787878ff&noise=626262&density=68&opacity=100');}
+/*NOISY BACKGROUND https://www.cssmatic.com/noise-texture */
+#bigone{background-image: url('../images/img-noise-361x370.png');}
 
 /* WORDS */
 #wantmore{top:0;}
-#instructions{bottom:0;}
-#instructions a,#wantmore a{text-decoration: underline;}
-#instructions i {padding:0 0.6em;}
-#instructions, #wantmore{
+.instructions{bottom:0;}
+.instructions a,#wantmore a{text-decoration: underline;}
+.instructions i {padding:0 0.6em;}
+.instructions, #wantmore{
 	opacity:1;
 	display:none;font-size:1.2em;
 	width:85%;max-width:400px;
@@ -162,13 +150,28 @@ path{fill:#fff;stroke-width:1.6;}
 }
 #banner.disappear,#slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
 
-#slider,#instructions,#wantmore{
+#slider,.instructions,#wantmore{
 	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 }
+
+/* MAILCHIMP EMBED FORM */
+#mc_embed_signup_scroll form{padding:0!important;font-family:Oxygen, sans-serif!important;}
+.mc-field-group{width:100%!important;text-align:center!important;margin-top:1.5em!important;}
+.mc-field-group input{display:inline-block!important;height:40px!important;padding-left:0.5em;}
+.mc-field-group .email{width:340px!important;}
+#mc-embedded-subscribe.button{
+	font-variant: small-caps;
+	clear:none!important;width:112px!important;height:45px!important;
+	margin:0px 6px!important;font-size:1.2em;
+	cursor:pointer;
+}
+#mc_embed_signup_scroll div.clear {margin-bottom:1em;}
+#mce-responses,.response{float:none!important;top:0!important;margin:1em auto!important;}
+
 
 /* SMALL SCREENS */
 @media only screen and (max-width:599px), screen and (max-height:499px){
@@ -177,6 +180,10 @@ path{fill:#fff;stroke-width:1.6;}
 @media only screen and (max-width:474px), screen and (max-height:399px){
 	#banner .link a{margin:0.1em 0.4em;padding:0.1em;}
 	#slider{font-size:1.8em;}
+}
+@media only screen and (max-width:420px), screen and (max-height:399px){
+	.mc-field-group input{display:block!important;width:100%!important;margin:auto!important;}
+	.mc-field-group .email{width:100%!important;}
 }
 @media only screen and (max-width:349px){
 	#banner .link a{margin:0.5em;padding:0.1em;}

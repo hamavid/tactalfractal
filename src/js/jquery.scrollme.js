@@ -217,15 +217,16 @@ var scrollme = ( function( $ )
 				if( end > ( _this.body_height - _this.viewport_height ) ) end = _this.body_height - _this.viewport_height;
 
 				// Get scroll position of reference selector
-
 				var scroll = ( _this.viewport_top - start ) / ( end - start );
-				
+				//console.log(_this.viewport_top, start, end, scroll);
+
 				// Get relative scroll position for effect
 
 				var from = effect[ 'from' ];
 				var to = effect[ 'to' ];
 
 				var length = to - from;
+				//console.log(from, to);
 
 				var scroll_relative = ( scroll - from ) / length;
 				

@@ -7,10 +7,15 @@
 	// make elements proper heights
 	$('div#bigone').css('height','1220%'); // heights of all unfixed elements should add to this
 	$('div#smallone').css('height','8.19%'); // reciprocal of total heights (scales it to 100%)
-	$('div#pa,div#pb').css('height','410%');
+	$('div#pa').css('height','250%');
+	$('div#pb').css('height','400%');
 	// titlepocket, pb-zoom, pb-borders are unfixed (so count toward total)
 	$('div#titlepocket,div#pb-zoom,div#pb-borders,div#puzzle-a,div#puzzle-b,div#puzzle-b-borders').css('height','100%');
-	$('div.textpocket').css('height','50%'); // two of these
+	$('div#one').css('height','50%');
+	$('div#two').css('height','50%');
+	$('div#three').css('height','90%');
+	$('div.wantmore').css('height','70%'); // FIX THIS
+	
 	// Total: 410+410+100+100+100+50+50 = 1220
 	// Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div
 	
@@ -26,19 +31,24 @@
 	});
 	
 	// show instructions and wantmore bars
-	$('div#instructions, div#wantmore').css('display','block');
+	$('div.instructions, div#wantmore').css('display','block');
 
 
 // function to get window info
 	function getwindowinfo() {
 		var titletop = document.getElementById('titlepocket').getBoundingClientRect().top;
-		var wantmoretop = document.getElementById('wantmore').getBoundingClientRect().top;
+		//var wantmoretop = document.getElementById('wantmore').getBoundingClientRect().top;
+		var bigonetop = document.getElementById('bigone').getBoundingClientRect().top;
+		var bigoneheight = document.getElementById('bigone').clientHeight;
+		//console.log(bigoneheight);
 		var vh = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-		var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		//var vw = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 		var bannerthresh = 61;
 		return {
 	        titletop: titletop,
-	        wantmoretop: wantmoretop,
+	        bigonetop: bigonetop,
+	        bigoneheight: bigoneheight,
+	        //wantmoretop: wantmoretop,
 	        vh: vh,
 	        bannerthresh: bannerthresh
 	    };
@@ -71,19 +81,26 @@ $(document).ready(function(){
 				// get window info
 				var windowinfo = getwindowinfo();
 				var titletop = windowinfo.titletop;
-				var wantmoretop = windowinfo.wantmoretop;
-				var vh = windowinfo.vh;
+				var bigonetop = windowinfo.bigonetop;
+				var bigoneheight = windowinfo.bigoneheight;
+				//var wantmoretop = windowinfo.wantmoretop;
+				//var vh = windowinfo.vh;
 				var bannerthresh = windowinfo.bannerthresh;
 
 			// PUZZLES
-				// Switch from puzzle a to b when the top of the text pocket hits the bottom of the viewport on its way in
-				if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}
-				// Switch from b to a when it gets below the top of the viewport when scrolling back up
-				else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
+				// Switch from puzzle a to b when a is solved
+				//console.log(bigonetop/bigoneheight);
+				if (bigonetop < -0.276 * bigoneheight) {puzzbstill.css('opacity',1);}else{puzzbstill.css('opacity',0);}
+				if (bigonetop < -0.3 * bigoneheight) {puzza.css('opacity',0);}else {puzza.css('opacity',1);}
+				//if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
 				// Add borders to puzzle b at end
-				if (wantmoretop < 2.78 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (bigonetop < -0.76 * bigoneheight) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (bigonetop < -0.8 * bigoneheight) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
+				if (bigonetop < -0.84 * bigoneheight) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
+				// TO FIX: THIS IS INCONSISTENT ON MOBILE BROWSERS
+				/*if (wantmoretop < 2.78 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
 				if (wantmoretop < 2.33 * vh) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
-				if (wantmoretop < 1.66 * vh) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
+				if (wantmoretop < 1.66 * vh) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}*/
 			
 			// BANNER/SLIDER
 				// Switch from slider to banner when top of text pocket hits where bottom of banner will be on its way in
