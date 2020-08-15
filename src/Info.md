@@ -3,7 +3,7 @@ layout: play.html
 outdirs: '..'
 title: Info
 url: info
-pageid: play
+pageid: Play
 ---
 <div class="textpocket">
 		<div class="text">
