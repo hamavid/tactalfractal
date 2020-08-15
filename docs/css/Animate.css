@@ -1,11 +1,12 @@
-html,body,.container{width:100%;height:100%;margin:auto;}
-
+.container{width:100%;height:100%;margin:auto;}
 /* NO JS VERSION */
+#nojs{height:100%;}
 #nojs div.spacer{height:61px;}
 /*#nojs div.footer{height:61px;width:100%;background:rgba(220,220,220,0.8);}*/
+.nojsimg{position:relative;height:100%;}
 #nojs img{
 	width:500px;max-width:80%;
-	padding:1em;margin:auto;
+	margin:3em auto;
 }
 #nojs img.unsolved{
 	width:900px;max-width:100%;
@@ -16,30 +17,29 @@ html,body,.container{width:100%;height:100%;margin:auto;}
 #bigone{background-image: url('../images/img-noise-361x370.png');}
 
 /* WORDS */
-#wantmore{top:0;}
-.instructions{bottom:0;}
-.instructions a,#wantmore a{text-decoration: underline;}
-.instructions i {padding:0 0.6em;}
-.instructions, #wantmore{
-	opacity:1;
-	display:none;font-size:1.2em;
-	width:85%;max-width:400px;
-	margin:auto;padding:0.7em;
-	z-index:3;
-	position:absolute;
-	background:rgba(220,220,220,0.9);
-	border-radius:10px;
-	left:50%;
-	-webkit-transform: translate(-50%, 0);
+#wantmore{
+  top:0;
+  opacity:1;
+  display:none;font-size:1.2em;
+  width:85%;max-width:400px;
+  margin:auto;padding:0.7em;
+  z-index:3;
+  background:rgba(220,220,220,0.9);
+  border-radius:10px;
+  position:absolute;
+  left:50%;
+  -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
     -ms-transform: translate(-50%, 0);
     -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0);}
+#wantmore a{text-decoration: underline;}
+.text{
+	bottom:0;display:none;
+	width:85%;max-width:400px;
 }
 
-
 /* PUZZLES */
-.textpocket{position:relative;}
 #bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-borders{height:0;}
 #puzzle-a,#puzzle-b,#puzzle-b-borders{
 	position:fixed;top:50%;left:50%;
@@ -102,34 +102,12 @@ path{fill:#fff;stroke-width:1.6;}
 
 /* BANNER AND LINKS */
 #titlepocket{width:100%;}
-#banner{
-	position:fixed;top:0;left:0;
-	width:100%;margin:auto;
-	font-size:2em;padding:0.3em 0;opacity:1;
-	background:rgba(220,220,220,1);
-	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-	-ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-	-o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-	box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-}
 .title{
 	display:inline-block;
 	/*background:rgba(220,220,220,1);
 	padding:0;
 	box-shadow: 0px 0px 16px 0px rgba(220,220,220,0.8);*/
 }
-#banner .link a{
-	display:inline-block;
-	font-size:0.7em;margin:0 2.8em;
-	padding:0.1em 0.5em 0.2em 0.5em;border-radius:5px;
-	-webkit-transition:background 0.3s, color 0.3s;
-	-moz-transition:background 0.3s, color 0.3s;
-    -ms-transition:background 0.3s, color 0.3s;
-    -o-transition:background 0.3s, color 0.3s;
-	transition:background 0.3s;
-}
-#banner .link a:hover{color:#fff;background: rgba(170,170,170,1);}
 #slider{
 	position:relative;width:350px;max-width:70%;margin:auto;
 	font-size:2.5em;padding:1.3em 0em;
@@ -140,7 +118,7 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:height 0.3s;
 	transition:height 0.3s;;
 }
-#banner,#slider{
+#slider{
 	font-variant:small-caps;z-index:3;
 	-webkit-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
 	-moz-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
@@ -148,9 +126,9 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
 	transition:padding 0.3s,background 0.3s,width 0.3s,opacity 0.3s;
 }
-#banner.disappear,#slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
+#slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
 
-#slider,.instructions,#wantmore{
+#slider,#wantmore{
 	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
@@ -161,32 +139,28 @@ path{fill:#fff;stroke-width:1.6;}
 /* MAILCHIMP EMBED FORM */
 #mc_embed_signup_scroll form{padding:0!important;font-family:Oxygen, sans-serif!important;}
 .mc-field-group{width:100%!important;text-align:center!important;margin-top:1.5em!important;}
-.mc-field-group input{display:inline-block!important;height:40px!important;padding-left:0.5em;}
-.mc-field-group .email{width:340px!important;}
+.mc-field-group input{display:block!important;height:40px!important;padding-left:0.5em;}
+.mc-field-group .email{width:90%;max-width:340px!important;margin:auto!important;}
 #mc-embedded-subscribe.button{
 	font-variant: small-caps;
 	clear:none!important;width:112px!important;height:45px!important;
 	margin:0px 6px!important;font-size:1.2em;
-	cursor:pointer;
+	cursor:pointer;border:1px solid rgb(170,170,170,1);
+	background:rgba(220,220,220,1);border-radius:5px;
+	-webkit-transition:background 0.3s, color 0.3s;
+    -moz-transition:background 0.3s, color 0.3s;
+    -ms-transition:background 0.3s, color 0.3s;
+    -o-transition:background 0.3s, color 0.3s;
+    transition:background 0.3s;
 }
+#mc-embedded-subscribe.button:hover{background:rgba(170,170,170,1);color:#fff;}
 #mc_embed_signup_scroll div.clear {margin-bottom:1em;}
 #mce-responses,.response{float:none!important;top:0!important;margin:1em auto!important;}
 
 
 /* SMALL SCREENS */
-@media only screen and (max-width:599px), screen and (max-height:499px){
-	#banner .link a{margin:0.1em 1.7em;padding:0.1em 0.2em 0.2em 0.2em;}
-}
 @media only screen and (max-width:474px), screen and (max-height:399px){
-	#banner .link a{margin:0.1em 0.4em;padding:0.1em;}
 	#slider{font-size:1.8em;}
 }
-@media only screen and (max-width:420px), screen and (max-height:399px){
-	.mc-field-group input{display:block!important;width:100%!important;margin:auto!important;}
-	.mc-field-group .email{width:100%!important;}
-}
-@media only screen and (max-width:349px){
-	#banner .link a{margin:0.5em;padding:0.1em;}
-	#banner .title{display:none;}
-}
+
 

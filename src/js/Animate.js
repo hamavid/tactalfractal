@@ -31,7 +31,7 @@
 	});
 	
 	// show instructions and wantmore bars
-	$('div.instructions, div#wantmore').css('display','block');
+	$('div.text, div#wantmore').css('display','block');
 
 
 // function to get window info
