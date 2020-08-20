@@ -3,7 +3,7 @@
 	{{>pagehead}}
 	<body>
 
-<!-- JS DISABLED VERSION -->
+<!-- JS DISABLED VERSION 
 <div id="nojs">
 	<div class="spacer"></div>
 	<div class="nojsimg"><img class="unsolved" src="{{outdirs}}/images/puzzaapart.png"></div>
@@ -11,6 +11,7 @@
 	<div class="nojsimg"><img class="unsolved" src="{{outdirs}}/images/puzzbapart.png"></div>
 	<div class="nojsimg"><img src="{{outdirs}}/images/puzzbsolved.png"></div>
 </div>
+-->
 
 <div class="scrollme" id="bigone">
 	<div id="smallone">
@@ -33,8 +34,8 @@
 
 		<!-- TITLE BANNER WITH LINKS -->
 		<div id="titlepocket">
-			<div id="slider" class="disappear"><span class='title'>TactalFractal</span></div>
-			<div id="banner">
+			<div id="slider"><span class='title'>TactalFractal</span></div>
+			<div id="banner" class="disappear">
 				<span class='link'><a href='{{outdirs}}/info'>info</a></span>
 				<span class='title'>TactalFractal</span>
 				<span class='link'><a href='{{outdirs}}/#wantmore'>shop</a></span>
@@ -58,7 +59,7 @@
 		</div>
 
 		<!-- END NOTES -->
-		<div class="textpocket wantmore">
+		<div id="wantmorepocket">
 			<div id="wantmore">
 			Want to solve this puzzle in real life? Enter your email to be notified when it's available!
 			<!-- Begin Mailchimp Signup Form -->
@@ -82,9 +83,9 @@
 			<!--End mc_embed_signup-->
 			</div>
 		</div>
+		<!--{{>footer}}-->
 	</div>
 </div>
 	{{>endscripts}}
-
 	</body>
 </html>

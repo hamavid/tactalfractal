@@ -1,6 +1,6 @@
 // Set up stuff - defaults are for no js
 	// disappear nojs version
-	$('div#nojs').css('display','none').css('height',0);
+	/*$('div#nojs').css('display','none').css('height',0);
 	// disappear the banner and appear the slider
 	$('div#banner').addClass('disappear');
 	$('div#slider').removeClass('disappear');
@@ -18,7 +18,7 @@
 	
 	// Total: 410+410+100+100+100+50+50 = 1220
 	// Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div
-	
+	*/
 	// call the svgs for puzzles
 	d3.svg("./svgs/puzzle-a-withdata.svg").then(function(xml) {
 		d3.select("div#puzzle-a").node().appendChild(xml.documentElement);
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			var slider = $('div#slider');
 
 			// show puzzle a
-			//puzza.css('opacity',1);
+			puzza.css('opacity',1);
 
 			//SWITCH THINGS UP 
 			scrollControl();
@@ -89,14 +89,14 @@ $(document).ready(function(){
 
 			// PUZZLES
 				// Switch from puzzle a to b when a is solved
-				//console.log(bigonetop/bigoneheight);
+				console.log(bigonetop/bigoneheight);
 				if (bigonetop < -0.276 * bigoneheight) {puzzbstill.css('opacity',1);}else{puzzbstill.css('opacity',0);}
 				if (bigonetop < -0.3 * bigoneheight) {puzza.css('opacity',0);}else {puzza.css('opacity',1);}
 				//if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
 				// Add borders to puzzle b at end
-				if (bigonetop < -0.76 * bigoneheight) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
-				if (bigonetop < -0.8 * bigoneheight) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
-				if (bigonetop < -0.84 * bigoneheight) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
+				if (bigonetop < -0.731 * bigoneheight) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (bigonetop < -0.76 * bigoneheight) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
+				if (bigonetop < -0.79 * bigoneheight) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
 				// TO FIX: THIS IS INCONSISTENT ON MOBILE BROWSERS
 				/*if (wantmoretop < 2.78 * vh) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
 				if (wantmoretop < 2.33 * vh) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}

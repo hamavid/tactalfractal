@@ -19,16 +19,6 @@ body {
 
 /* WORDS */
 .textpocket{position:relative;height:100%;overflow:auto;}
-.text{
-  position:relative;
-  -webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-  -moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-  -ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-  -o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-  box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
-}
-.text a{text-decoration: underline;}
-.text i {padding:0 0.6em;}
 .text {
   opacity:1;
   font-size:1.2em;
@@ -40,11 +30,18 @@ body {
   border-radius:10px;
   left:50%;
   -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  -webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+  -moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+  -ms-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+  -o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
+  box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 }
+.text a{text-decoration: underline;}
+.text i {padding:0 0.6em;}
 footer{padding: 2em;}
 
 /* BANNER AND LINKS */

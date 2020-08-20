@@ -2,16 +2,22 @@
 /* NO JS VERSION */
 #nojs{height:100%;}
 #nojs div.spacer{height:61px;}
-/*#nojs div.footer{height:61px;width:100%;background:rgba(220,220,220,0.8);}*/
 .nojsimg{position:relative;height:100%;}
-#nojs img{
-	width:500px;max-width:80%;
-	margin:3em auto;
-}
-#nojs img.unsolved{
-	width:900px;max-width:100%;
-}
+#nojs img{width:500px;max-width:80%;margin:3em auto;}
+#nojs img.unsolved{width:900px;max-width:100%;}
 
+/* MAKE ELEMENTS PROPER HEIGHTS */
+#bigone{height:1220%;} /* heights of all unfixed elements should add to this */
+#smallone{height:8.19%;} /* reciprocal of total heights (scales it to 100%) */
+#pa{height:250%;}
+#pb{height:400%;}
+/* titlepocket, pb-zoom, pb-borders are unfixed (so count toward total) */
+#titlepocket,div#pb-zoom,div#pb-borders,div#puzzle-a,div#puzzle-b,div#puzzle-b-borders{height:100%;}
+#one,#two{height:50%;}
+#three{height:90%;}
+#wantmorepocket{height:70%;}
+/*Total: 410+410+100+100+100+50+50 = 1220
+Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div */
 
 /*NOISY BACKGROUND https://www.cssmatic.com/noise-texture
 #bigone{background-image: url('../images/img-noise-361x370.png');} */
@@ -28,10 +34,11 @@
 	}
 */
 /* WORDS */
+#wantmorepocket{position:relative;}
 #wantmore{
   top:0;
   opacity:1;
-  display:none;font-size:1.2em;
+  display:block;font-size:1.2em;
   width:85%;max-width:400px;
   margin:auto;padding:0.7em;
   z-index:3;
@@ -51,7 +58,7 @@
 }
 
 /* PUZZLES */
-#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-borders{height:0;}
+/*#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-borders{height:0;}*/
 #puzzle-a,#puzzle-b,#puzzle-b-borders{
 	position:fixed;top:50%;left:50%;
 	width:100%;
@@ -123,19 +130,12 @@ path{fill:#fff;stroke-width:1.6;}
 	position:relative;width:350px;max-width:70%;margin:auto;
 	font-size:2.5em;padding:1.3em 0em;
 	background:rgba(220,220,220,0.8);border-radius:10px;
-	-webkit-transition:height 0.3s;
-	-moz-transition:height 0.3s;
-    -ms-transition:height 0.3s;
-    -o-transition:height 0.3s;
-	transition:height 0.3s;;
-}
-#slider{
 	font-variant:small-caps;z-index:3;
-	-webkit-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
-	-moz-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
-    -ms-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
-    -o-transition:padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
-	transition:padding 0.3s,background 0.3s,width 0.3s,opacity 0.3s;
+	-webkit-transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
+	-moz-transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
+    -ms-transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
+    -o-transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s, box-shadow 0.6s,opacity 0.3s;
+	transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s,opacity 0.3s;
 }
 #slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
 
