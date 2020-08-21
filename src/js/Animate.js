@@ -75,6 +75,7 @@ $(document).ready(function(){
 
 			//SWITCH THINGS UP 
 			scrollControl();
+			$('#wantmorelink').click(scrollControl);
 			$(window).bind('scroll resize', scrollControl);
 			function scrollControl() {
 
@@ -89,7 +90,7 @@ $(document).ready(function(){
 
 			// PUZZLES
 				// Switch from puzzle a to b when a is solved
-				console.log(bigonetop/bigoneheight);
+				//console.log(bigonetop/bigoneheight);
 				if (bigonetop < -0.276 * bigoneheight) {puzzbstill.css('opacity',1);}else{puzzbstill.css('opacity',0);}
 				if (bigonetop < -0.3 * bigoneheight) {puzza.css('opacity',0);}else {puzza.css('opacity',1);}
 				//if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}

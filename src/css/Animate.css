@@ -55,6 +55,13 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
 .text{
 	bottom:0;display:none;
 	width:85%;max-width:400px;
+	 position:absolute;
+    left:50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);*/
 }
 
 /* PUZZLES */
