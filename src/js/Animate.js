@@ -64,6 +64,7 @@ $(document).ready(function(){
 			var puzza = $('div#puzzle-a');
 			var puzzbstill = $('div#puzzle-b>div>svg>g>g.still');
 			var puzzbanim = $('div#puzzle-b>div>svg>g>g.animateme');
+			var puzzbborder = $('div#puzzle-b-borders');
 			var lvl2 = $('path#lvl2');
 			var lvl1 = $('path#lvl1');
 			var lvl0 = $('path#lvl0');
@@ -95,7 +96,8 @@ $(document).ready(function(){
 				if (bigonetop < -0.3 * bigoneheight) {puzza.css('opacity',0);}else {puzza.css('opacity',1);}
 				//if (titletop < vh) {puzza.css('opacity',0);puzzbstill.css('opacity',1);}else {puzza.css('opacity',1);puzzbstill.css('opacity',0);}
 				// Add borders to puzzle b at end
-				if (bigonetop < -0.731 * bigoneheight) {lvl2.css('opacity',1);}else{lvl2.css('opacity',0);}
+				if (bigonetop < -0.731 * bigoneheight) {puzzbborder.css('opacity',1);lvl2.css('opacity',1);}
+				else{puzzbborder.css('opacity',0);lvl2.css('opacity',0);}
 				if (bigonetop < -0.76 * bigoneheight) {lvl1.css('opacity',1);}else{lvl1.css('opacity',0);}
 				if (bigonetop < -0.79 * bigoneheight) {lvl0.css('opacity',1);}else{lvl0.css('opacity',0);}
 				// TO FIX: THIS IS INCONSISTENT ON MOBILE BROWSERS

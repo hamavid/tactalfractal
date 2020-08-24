@@ -76,7 +76,7 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme{opacity:0;}
+#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-borders{opacity:0;}
 #puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-borders path{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
