@@ -1,44 +1,23 @@
 .container{width:100%;height:100%;margin:auto;}
-/* NO JS VERSION */
-#nojs{height:100%;}
-#nojs div.spacer{height:61px;}
-.nojsimg{position:relative;height:100%;}
-#nojs img{width:500px;max-width:80%;margin:3em auto;}
-#nojs img.unsolved{width:900px;max-width:100%;}
 
 /* MAKE ELEMENTS PROPER HEIGHTS */
 #bigone{height:1220%;} /* heights of all unfixed elements should add to this */
 #smallone{height:8.19%;} /* reciprocal of total heights (scales it to 100%) */
-#pa{height:250%;}
-#pb{height:400%;}
-/* titlepocket, pb-zoom, pb-borders are unfixed (so count toward total) */
-#titlepocket,div#pb-zoom,div#pb-borders,div#puzzle-a,div#puzzle-b,div#puzzle-b-borders{height:100%;}
+#pa-pocket{height:250%;}
+#pb-pocket{height:400%;}
+#title-pocket,div#pb-zoom,div#pb-borders-pocket{height:100%;}
 #one,#two{height:50%;}
 #three{height:90%;}
-#wantmorepocket{height:70%;}
+#wantmore-pocket{height:80%;}
 /*Total: 410+410+100+100+100+50+50 = 1220
 Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div */
 
-/*NOISY BACKGROUND https://www.cssmatic.com/noise-texture
-#bigone{background-image: url('../images/img-noise-361x370.png');} */
-/* STARRY NIGHT BACKGROUND  https://leaverou.github.io/css3patterns/#starry-night 
-#bigone{
-	background-color:black;
-	background-image:
-	radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-	radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-	radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
-	radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-	background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-	background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-	}
-*/
+
 /* WORDS */
-#wantmorepocket{position:relative;}
+#wantmore-pocket{position:relative;}
 #wantmore{
-  top:0;
-  opacity:1;
-  display:block;font-size:1.2em;
+  display:block;top:0;
+  font-size:1.2em;
   width:85%;max-width:400px;
   margin:auto;padding:0.7em;
   z-index:3;
@@ -47,15 +26,15 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
   position:absolute;
   left:50%;
   -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);}
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);}
 #wantmore a{text-decoration: underline;}
 .text{
-	bottom:0;display:none;
+	display:block;bottom:0;
 	width:85%;max-width:400px;
-	 position:absolute;
+	position:absolute;
     left:50%;
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
@@ -64,11 +43,11 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
     transform: translate(-50%, 0);*/
 }
 
+
 /* PUZZLES */
-/*#bigone,#smallone,#titlepocket,#pa,#pb,#puzzle-a,#puzzle-b,#puzzle-b-borders{height:0;}*/
-#puzzle-a,#puzzle-b,#puzzle-b-borders{
+#pa,#pb,#pb-borders{
 	position:fixed;top:50%;left:50%;
-	width:100%;
+	width:100%;height:100%;
 	margin:auto;
 	-webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
@@ -76,8 +55,8 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
-#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-borders{opacity:0;}
-#puzzle-a,#puzzle-b>div>svg>g>g.still,#puzzle-b>div>svg>g>g.animateme,#puzzle-b-borders path{
+#pa,#pb>div>svg>g>g.still,#pb>div>svg>g>g.animateme,#pb-borders{opacity:0;}
+#pa,#pb>div>svg>g>g.still,#pb>div>svg>g>g.animateme,#pb-borders path{
     -webkit-transition:opacity 0.8s;
 	-moz-transition:opacity 0.8s;
     -ms-transition:opacity 0.8s;
@@ -100,7 +79,6 @@ svg>g{
 	position:absolute;top:0;left:0;
 	margin:0;	
 }
-
 path{fill:#fff;stroke-width:1.6;}
 #pb path{
 	stroke-width:0.5;
@@ -110,29 +88,15 @@ path{fill:#fff;stroke-width:1.6;}
     -o-transition:stroke-width 0.5s;
 	transition:stroke-width 0.5s;
 }
-#puzzle-b-borders path{fill: rgba(255,255,255,0);}
+#pb-borders path{fill: rgba(255,255,255,0);}
 #lvl2{stroke-width:4;opacity:0;}
 #lvl1{stroke-width:2.6;opacity:0;}
 #lvl0{stroke-width:1.8;opacity:0;}
 
 
-/* puzzle piece colors */
-/*#pa .j,#pb .a path,#pb .c path,#pb .e path,#pb .g path,#pb .h path,#pb .j path,#pb .l path,#pb .n path,#pb .p path, #pb .q path,#pb .r path,#pb .t path,#pb .u path{
-	fill:rgb(215,215,215);
-}
-#pb .b path,#pb .d path,#pb .f path,#pb .i path,#pb .k path,#pb .m, path,#pb .o path,#pb .s path, #pb .v path{
-	fill:rgb(245,245,245);
-}*/
-
-
 /* BANNER AND LINKS */
-#titlepocket{width:100%;}
-.title{
-	display:inline-block;
-	/*background:rgba(220,220,220,1);
-	padding:0;
-	box-shadow: 0px 0px 16px 0px rgba(220,220,220,0.8);*/
-}
+#title-pocket{width:100%;}
+.title{display:inline-block;}
 #slider{
 	position:relative;width:350px;max-width:70%;margin:auto;
 	font-size:2.5em;padding:1.3em 0em;
@@ -145,7 +109,6 @@ path{fill:#fff;stroke-width:1.6;}
 	transition:height 0.3s,padding 0.3s,background 0.3s,width 0.3s,opacity 0.3s;
 }
 #slider.disappear{width:100%;padding:0;font-size:0;opacity:0;}
-
 #slider,#wantmore{
 	-webkit-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	-moz-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
@@ -153,6 +116,7 @@ path{fill:#fff;stroke-width:1.6;}
 	-o-box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 	box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 4px 4px 0 rgba(0,0,0,0.12);
 }
+
 
 /* MAILCHIMP EMBED FORM */
 #mc_embed_signup_scroll form{padding:0!important;font-family:Oxygen, sans-serif!important;}

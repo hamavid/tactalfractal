@@ -1,42 +1,19 @@
-// Set up stuff - defaults are for no js
-	// disappear nojs version
-	/*$('div#nojs').css('display','none').css('height',0);
-	// disappear the banner and appear the slider
-	$('div#banner').addClass('disappear');
-	$('div#slider').removeClass('disappear');
-	// make elements proper heights
-	$('div#bigone').css('height','1220%'); // heights of all unfixed elements should add to this
-	$('div#smallone').css('height','8.19%'); // reciprocal of total heights (scales it to 100%)
-	$('div#pa').css('height','250%');
-	$('div#pb').css('height','400%');
-	// titlepocket, pb-zoom, pb-borders are unfixed (so count toward total)
-	$('div#titlepocket,div#pb-zoom,div#pb-borders,div#puzzle-a,div#puzzle-b,div#puzzle-b-borders').css('height','100%');
-	$('div#one').css('height','50%');
-	$('div#two').css('height','50%');
-	$('div#three').css('height','90%');
-	$('div.wantmore').css('height','70%'); // FIX THIS
-	
-	// Total: 410+410+100+100+100+50+50 = 1220
-	// Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to scroll out of the div
-	*/
-	// call the svgs for puzzles
+$(document).ready(function(){
+
+// call the svgs for puzzles
 	d3.svg("./svgs/puzzle-a-withdata.svg").then(function(xml) {
-		d3.select("div#puzzle-a").node().appendChild(xml.documentElement);
+		d3.select("div#pa").node().appendChild(xml.documentElement);
 	});
 	d3.svg("./svgs/puzzle-b-withdata.svg").then(function(xml) {
-		d3.select("div#puzzle-b>div").node().appendChild(xml.documentElement);
+		d3.select("div#pb>div").node().appendChild(xml.documentElement);
 	});
 	d3.svg("./svgs/web_outline_three_pieces.svg").then(function(xml) {
-		d3.select("div#puzzle-b-borders").node().appendChild(xml.documentElement);
+		d3.select("div#pb-borders").node().appendChild(xml.documentElement);
 	});
 	
-	// show instructions and wantmore bars
-	$('div.text, div#wantmore').css('display','block');
-
-
 // function to get window info
 	function getwindowinfo() {
-		var titletop = document.getElementById('titlepocket').getBoundingClientRect().top;
+		var titletop = document.getElementById('title-pocket').getBoundingClientRect().top;
 		//var wantmoretop = document.getElementById('wantmore').getBoundingClientRect().top;
 		var bigonetop = document.getElementById('bigone').getBoundingClientRect().top;
 		var bigoneheight = document.getElementById('bigone').clientHeight;
@@ -54,17 +31,14 @@
 	    };
 	}
 
-
-$(document).ready(function(){
-
 	// Do stuff when page is fully loaded + a bit just in case
 	$(window).load( function(){ 
 		setTimeout( function(){
 			// set vars
-			var puzza = $('div#puzzle-a');
-			var puzzbstill = $('div#puzzle-b>div>svg>g>g.still');
-			var puzzbanim = $('div#puzzle-b>div>svg>g>g.animateme');
-			var puzzbborder = $('div#puzzle-b-borders');
+			var puzza = $('div#pa');
+			var puzzbstill = $('div#pb>div>svg>g>g.still');
+			var puzzbanim = $('div#pb>div>svg>g>g.animateme');
+			var puzzbborder = $('div#pb-borders');
 			var lvl2 = $('path#lvl2');
 			var lvl1 = $('path#lvl1');
 			var lvl0 = $('path#lvl0');
@@ -110,14 +84,14 @@ $(document).ready(function(){
 				if (titletop <= bannerthresh) {
 					slider.addClass('disappear');
 					banner.removeClass('disappear');
-					$('div#puzzle-a>div>svg,div#puzzle-b>div>svg').addClass('shift');
+					$('div#pa>div>svg,div#pb>div>svg').addClass('shift');
 					puzzbanim.css('opacity',1);
 				} 
 				// Switch from banner to slider when top of text pocket gets below that threshold when scrolling back up
 				else {
 					banner.addClass('disappear');
 					slider.removeClass('disappear');
-					$('div#puzzle-a>div>svg,div#puzzle-b>div>svg').removeClass('shift');
+					$('div#pa>div>svg,div#pb>div>svg').removeClass('shift');
 					puzzbanim.css('opacity',0);
 				}
 			}
