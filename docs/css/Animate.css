@@ -139,6 +139,8 @@ path{fill:#fff;stroke-width:1.6;}
 #mc_embed_signup_scroll div.clear {margin-bottom:1em;}
 #mce-responses,.response{float:none!important;top:0!important;margin:1em auto!important;}
 
+.opa{opacity:1;}
+.see{opacity:0;}
 
 /* SMALL SCREENS */
 @media only screen and (max-width:474px), screen and (max-height:399px){
