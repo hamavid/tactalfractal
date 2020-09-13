@@ -94,7 +94,8 @@ var scrollme = ( function( $ )
 			_this.init_elements();
 			_this.on_resize();
 			_this.update();
-			} , 100 ) // HH added more fxns after delay so d3 can add svg, things catch up
+			} , 200 ) 
+			// HH added more fxns after delay so d3 can add svg, things catch up
 		});
 
 		// Start animating
