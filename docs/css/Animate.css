@@ -40,9 +40,8 @@ Reciprocal: 1000/1220 = 0.8196 : round down to make sure it's not possible to sc
     -moz-transform: translate(-50%, 0);
     -ms-transform: translate(-50%, 0);
     -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);*/
+    transform: translate(-50%, 0);
 }
-
 
 /* PUZZLES */
 #pa,#pb,#pb-borders{
